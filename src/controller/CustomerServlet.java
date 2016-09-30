@@ -22,20 +22,37 @@ import model.Customer;
 @WebServlet("/CustomerServlet")
 public class CustomerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+    private static String INSERT_OR_EDIT = "/customer.jsp";
+    private static String LIST_USER = "/listCustomer.jsp";
+    private CustomerDAO dao;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
     public CustomerServlet() {
         super();
+        dao = new CustomerDAO();
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("name", request.getParameter("name"));
-		RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+		String forward = "";
+		String action = request.getParameter("action");
+		
+		if(action.equalsIgnoreCase("edit")){
+			forward = INSERT_OR_EDIT;
+			Long code = Long.parseLong(request.getParameter("code"));
+			Customer customer = dao.searchCustomerByCode(code);
+			request.setAttribute("customer", customer);
+		} else if(action.equalsIgnoreCase("listCusomer")){
+			forward = LIST_USER;
+			request.setAttribute("customers", dao.getAllCustomers());
+		} else {
+			forward = INSERT_OR_EDIT;
+		}
+		RequestDispatcher dispatcher = request.getRequestDispatcher(forward);
 		dispatcher.forward(request, response);
 	}
 
@@ -55,10 +72,17 @@ public class CustomerServlet extends HttpServlet {
 																request.getParameter("city"),
 																request.getParameter("cep")));
 		
-		CustomerDAO dao = new CustomerDAO();
-		dao.addCustumer(customer);
+		String code = request.getParameter("code");
+		if (code == null || code.isEmpty()){
+			dao.addCustumer(customer);
+		} else {
+			customer.setCode(Long.parseLong(code));
+			dao.updateCustomer(customer);
+		}
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("");
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher(LIST_USER);
+		request.setAttribute("customers", dao.getAllCustomers());
 		dispatcher.forward(request, response);
 	}
 

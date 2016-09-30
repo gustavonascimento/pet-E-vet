@@ -34,4 +34,12 @@ public class Customer extends Person {
 		this.address = address;
 	}
 	
+	@Override
+	public String toString(){
+		return "Customer [code=" + getCode() + ", name=" + getName() +
+				", cpf=" + getCpf().getCpf() + ", email=" + getEmail().getEmail() + ", telephone" + 
+				getTelephoneNumber().getTelephoneNumber() + ", date_of_birth" + dateOfBirth +
+				", address" + getAddress().getAddress() + ", neighborhood" + getAddress().getNeighborhood() +
+				", city" + getAddress().getCity() + ", cep" + getAddress().getCep() + "]";
+	}
 }
