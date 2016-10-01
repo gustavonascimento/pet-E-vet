@@ -12,6 +12,7 @@
 	<table border=1>
 		<thead>
 			<tr>
+				<th>Code</th>
 				<th>Nome</th>
 				<th>CPF</th>
 				<th>Email</th>
@@ -25,18 +26,18 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${customers}" var="customer">
+			<c:forEach items="${customersList}" var="customer">
 				<tr>
 					<td><c:out value="${customer.code}"/></td>
 					<td><c:out value="${customer.name}" /></td>
-					<td><c:out value="${customer.cpf}" /></td>
-					<td><c:out value="${customer.email}" /></td>
-					<td><c:out value="${customer.telephone}" /></td>
+					<td><c:out value="${customer.cpf.cpf}" /></td>
+					<td><c:out value="${customer.email.email}" /></td>
+					<td><c:out value="${customer.telephone.telephone}" /></td>
 					<td><c:out value="${customer.date_of_birth}" /></td>
-					<td><c:out value="${customer.address}" /></td>
-					<td><c:out value="${customer.neighborhood}" /></td>
-					<td><c:out value="${customer.city}" /></td>	
-					<td><c:out value="${customer.cep}" /></td>	
+					<td><c:out value="${customer.address.address}" /></td>
+					<td><c:out value="${customer.address.neighborhood}" /></td>
+					<td><c:out value="${customer.address.city}" /></td>	
+					<td><c:out value="${customer.address.cep}" /></td>	
 					<td><a href="CustomerServlet?action=edit&code=<c:out value="${customer.code}"/>">Update</a></td>	
 				</tr>
 			</c:forEach>

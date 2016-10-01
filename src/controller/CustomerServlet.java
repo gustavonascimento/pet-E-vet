@@ -46,9 +46,9 @@ public class CustomerServlet extends HttpServlet {
 			Long code = Long.parseLong(request.getParameter("code"));
 			Customer customer = dao.searchCustomerByCode(code);
 			request.setAttribute("customer", customer);
-		} else if(action.equalsIgnoreCase("listCusomer")){
+		} else if(action.equalsIgnoreCase("listCustomer")){
 			forward = LIST_USER;
-			request.setAttribute("customers", dao.getAllCustomers());
+			request.setAttribute("customersList", dao.getAllCustomers());
 		} else {
 			forward = INSERT_OR_EDIT;
 		}
@@ -65,8 +65,8 @@ public class CustomerServlet extends HttpServlet {
 		customer.setName(request.getParameter("name"));
 		customer.setCpf(new Cpf(request.getParameter("cpf")));
 		customer.setEmail(new Email(request.getParameter("email")));
-		customer.setTelephoneNumber(new Telephone(request.getParameter("telephone")));
-		customer.setDateOfBirth(request.getParameter("date_of_birth"));
+		customer.setTelephone(new Telephone(request.getParameter("telephone")));
+		customer.setDate_of_birth(request.getParameter("date_of_birth"));
 		customer.setAddress(new Address(request.getParameter("address"),
 															  	request.getParameter("neighborhood"),
 																request.getParameter("city"),
@@ -82,7 +82,7 @@ public class CustomerServlet extends HttpServlet {
 		
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(LIST_USER);
-		request.setAttribute("customers", dao.getAllCustomers());
+		request.setAttribute("customersList", dao.getAllCustomers());
 		dispatcher.forward(request, response);
 	}
 

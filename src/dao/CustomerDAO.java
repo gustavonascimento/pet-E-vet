@@ -4,15 +4,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Customer;
 import util.Address;
 import util.Cpf;
 import util.Email;
 import util.Telephone;
-import model.Customer;
-import dao.ConnectionFactory;
 
 public class CustomerDAO {
 	private Connection connection;
@@ -31,8 +31,8 @@ public class CustomerDAO {
 			preparedStatement.setString(1, customer.getName());
 			preparedStatement.setString(2, customer.getCpf().getCpf());
 			preparedStatement.setString(3, customer.getEmail().getEmail());
-			preparedStatement.setString(4, customer.getTelephoneNumber().getTelephoneNumber());
-			preparedStatement.setString(5, customer.getDateOfBirth());
+			preparedStatement.setString(4, customer.getTelephone().getTelephone());
+			preparedStatement.setString(5, customer.getDate_of_birth());
 			preparedStatement.setString(6, customer.getAddress().getAddress());
 			preparedStatement.setString(7, customer.getAddress().getNeighborhood());
 			preparedStatement.setString(8, customer.getAddress().getCity());
@@ -60,8 +60,8 @@ public class CustomerDAO {
 				customer.setName(resultSet.getString("name"));
 				customer.setCpf(new Cpf(resultSet.getString("cpf")));
 				customer.setEmail(new Email(resultSet.getString("email")));
-				customer.setTelephoneNumber(new Telephone(resultSet.getString("telephone")));
-				customer.setDateOfBirth(resultSet.getString("date_of_birth"));
+				customer.setTelephone(new Telephone(resultSet.getString("telephone")));
+				customer.setDate_of_birth(resultSet.getString("date_of_birth"));
 				customer.setAddress(new Address(resultSet.getString("address"),
 				                                                		resultSet.getString("neighborhood"),
 				                                                		resultSet.getString("city"),
@@ -79,11 +79,10 @@ public class CustomerDAO {
 	
 	public List<Customer> getAllCustomers(){
 		List<Customer> customersList = new ArrayList<Customer>();
-		String sql = "SELECT * FROM Customer";
 		
 		try{
-			PreparedStatement preparedStatement = this.connection.prepareStatement(sql);
-			ResultSet resultSet = preparedStatement.executeQuery();
+			Statement statement = this.connection.createStatement();
+			ResultSet resultSet = statement.executeQuery("SELECT * FROM Customer");
 			
 			while(resultSet.next()){
 				Customer customer = new Customer();
@@ -91,8 +90,8 @@ public class CustomerDAO {
 				customer.setName(resultSet.getString("name"));
 				customer.setCpf(new Cpf(resultSet.getString("cpf")));
 				customer.setEmail(new Email(resultSet.getString("email")));
-				customer.setTelephoneNumber(new Telephone(resultSet.getString("telephone")));
-				customer.setDateOfBirth(resultSet.getString("date_of_birth"));
+				customer.setTelephone(new Telephone(resultSet.getString("telephone")));
+				customer.setDate_of_birth(resultSet.getString("date_of_birth"));
 				customer.setAddress(new Address(resultSet.getString("address"),
 				                                                		resultSet.getString("neighborhood"),
 				                                                		resultSet.getString("city"),
@@ -114,8 +113,8 @@ public class CustomerDAO {
 			
 			preparedStatement.setString(1, customer.getName());
 			preparedStatement.setString(3, customer.getEmail().getEmail());
-			preparedStatement.setString(4, customer.getTelephoneNumber().getTelephoneNumber());
-			preparedStatement.setString(5, customer.getDateOfBirth());
+			preparedStatement.setString(4, customer.getTelephone().getTelephone());
+			preparedStatement.setString(5, customer.getDate_of_birth());
 			preparedStatement.setString(6, customer.getAddress().getAddress());
 			preparedStatement.setString(7, customer.getAddress().getNeighborhood());
 			preparedStatement.setString(8, customer.getAddress().getCity());

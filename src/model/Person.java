@@ -10,7 +10,7 @@ public class Person {
 	private Long code;
 	private Cpf cpf;
 	private Email email;
-	private Telephone telephoneNumber;
+	private Telephone telephone;
 	
 
 	public Long getCode() {
@@ -33,12 +33,12 @@ public class Person {
 		this.email = email;
 	}
 
-	public Telephone getTelephoneNumber() {
-		return telephoneNumber;
+	public Telephone getTelephone() {
+		return telephone;
 	}
 
-	public void setTelephoneNumber(Telephone telephoneNumber) {
-		this.telephoneNumber = telephoneNumber;
+	public void setTelephone(Telephone telephone) {
+		this.telephone = telephone;
 	}
 
 	public void setCode(Long code) {

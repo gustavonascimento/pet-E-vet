@@ -6,16 +6,16 @@ import util.Address;
 
 public class Customer extends Person {
 
-	private String dateOfBirth;
+	private String date_of_birth;
 	private Address address;
  	private Animal animal;
 
-	public String getDateOfBirth() {
-		return dateOfBirth;
+	public String getDate_of_birth() {
+		return date_of_birth;
 	}
 
-	public void setDateOfBirth(String dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
+	public void setDate_of_birth(String date_of_birth) {
+		this.date_of_birth = date_of_birth;
 	}
 
 	public Animal getAnimal() {
@@ -38,7 +38,7 @@ public class Customer extends Person {
 	public String toString(){
 		return "Customer [code=" + getCode() + ", name=" + getName() +
 				", cpf=" + getCpf().getCpf() + ", email=" + getEmail().getEmail() + ", telephone" + 
-				getTelephoneNumber().getTelephoneNumber() + ", date_of_birth" + dateOfBirth +
+				getTelephone().getTelephone() + ", date_of_birth" + date_of_birth +
 				", address" + getAddress().getAddress() + ", neighborhood" + getAddress().getNeighborhood() +
 				", city" + getAddress().getCity() + ", cep" + getAddress().getCep() + "]";
 	}

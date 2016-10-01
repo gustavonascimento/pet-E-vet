@@ -2,17 +2,17 @@ package util;
 
 public class Telephone {
 
-	private String telephoneNumber;
+	private String telephone;
 
-	public Telephone(String telephoneNumber) {
-		this.telephoneNumber = telephoneNumber;
+	public Telephone(String telephone) {
+		this.telephone = telephone;
 	}
 
-	public String getTelephoneNumber() {
-		return telephoneNumber;
+	public String getTelephone() {
+		return telephone;
 	}
 
-	public void setTelephoneNumber(String telephoneNumber) {
-		this.telephoneNumber = telephoneNumber;
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
 	}
 }
