@@ -41,7 +41,12 @@ public class CustomerServlet extends HttpServlet {
 		String forward = "";
 		String action = request.getParameter("action");
 		
-		if(action.equalsIgnoreCase("edit")){
+		if(action.equalsIgnoreCase("delete")){
+			Long code = Long.parseLong(request.getParameter("code"));
+			dao.deleteCustomer(code);
+			forward = LIST_USER;
+			request.setAttribute("customersList", dao.getAllCustomers());
+		}else if(action.equalsIgnoreCase("edit")){
 			forward = INSERT_OR_EDIT;
 			Long code = Long.parseLong(request.getParameter("code"));
 			Customer customer = dao.searchCustomerByCode(code);

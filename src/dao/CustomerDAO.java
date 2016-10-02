@@ -106,12 +106,13 @@ public class CustomerDAO {
 	
 	public void updateCustomer(Customer customer) {
 		String sql = "UPDATE Customer SET name=?, cpf=?, email=?, telephone=?,"
-				+ "date_of_birth=?, address=?, neighborhood=?, city=?, cep=?"
-				+"where id=?";
+				+ "date_of_birth=STR_TO_DATE(?,  \"%d/%m/%Y\"), address=?, neighborhood=?, city=?, cep=?"
+				+"WHERE id=?";
 		try{
 			PreparedStatement preparedStatement = this.connection.prepareStatement(sql);
 			
 			preparedStatement.setString(1, customer.getName());
+			preparedStatement.setString(2, customer.getCpf().getCpf());
 			preparedStatement.setString(3, customer.getEmail().getEmail());
 			preparedStatement.setString(4, customer.getTelephone().getTelephone());
 			preparedStatement.setString(5, customer.getDate_of_birth());
@@ -123,6 +124,18 @@ public class CustomerDAO {
 			
 			preparedStatement.executeUpdate();
 		} catch (SQLException sqlException){
+			sqlException.printStackTrace();
+		}
+	}
+	
+	public void deleteCustomer(Long code){
+		String sql = "DELETE FROM Customer WHERE id=?";
+		try{
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setLong(1, code);
+			preparedStatement.executeUpdate();
+			
+		} catch(SQLException sqlException){
 			sqlException.printStackTrace();
 		}
 	}
