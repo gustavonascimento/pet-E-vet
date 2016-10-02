@@ -8,7 +8,7 @@ public class ConnectionFactory {
 	public static Connection getConnection(){
 		String conexao = "jdbc:mysql://localhost/petevet";
 		String login = "root";
-		String senha = "root";
+		String senha = "gustavo123";
 
 		try {
 			new com.mysql.jdbc.Driver();
