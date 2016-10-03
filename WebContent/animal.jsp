@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Add new customer</title>
+<title>Add new animal</title>
 </head>
 <body>
 	<form method = "POST" action='CustomerServlet' name="formAddCustomer">
