@@ -9,12 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.CustomerDAO;
+import model.Customer;
 import util.Address;
 import util.Cpf;
 import util.Email;
 import util.Telephone;
-import model.Customer;
+import dao.CustomerDAO;
 
 /**
  * Servlet implementation class CustomerServlet
@@ -24,14 +24,14 @@ public class CustomerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private static String INSERT_OR_EDIT = "/customer.jsp";
     private static String LIST_USER = "/listCustomer.jsp";
-    private CustomerDAO dao;
-       
+    private CustomerDAO customerDao;
+    
     /**
      * @see HttpServlet#HttpServlet()
      */
     public CustomerServlet() {
         super();
-        dao = new CustomerDAO();
+        customerDao = new CustomerDAO();
     }
 
 	/**
@@ -43,17 +43,17 @@ public class CustomerServlet extends HttpServlet {
 		
 		if(action.equalsIgnoreCase("delete")){
 			Long code = Long.parseLong(request.getParameter("code"));
-			dao.deleteCustomer(code);
+			customerDao.deleteCustomer(code);
 			forward = LIST_USER;
-			request.setAttribute("customersList", dao.getAllCustomers());
+			request.setAttribute("customersList", customerDao.getAllCustomers());
 		}else if(action.equalsIgnoreCase("edit")){
 			forward = INSERT_OR_EDIT;
 			Long code = Long.parseLong(request.getParameter("code"));
-			Customer customer = dao.searchCustomerByCode(code);
+			Customer customer = customerDao.searchCustomerByCode(code);
 			request.setAttribute("customer", customer);
 		} else if(action.equalsIgnoreCase("listCustomer")){
 			forward = LIST_USER;
-			request.setAttribute("customersList", dao.getAllCustomers());
+			request.setAttribute("customersList", customerDao.getAllCustomers());
 		} else {
 			forward = INSERT_OR_EDIT;
 		}
@@ -79,15 +79,15 @@ public class CustomerServlet extends HttpServlet {
 		
 		String code = request.getParameter("code");
 		if (code == null || code.isEmpty()){
-			dao.addCustumer(customer);
+			customerDao.addCustumer(customer);
 		} else {
 			customer.setCode(Long.parseLong(code));
-			dao.updateCustomer(customer);
+			customerDao.updateCustomer(customer);
 		}
 		
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(LIST_USER);
-		request.setAttribute("customersList", dao.getAllCustomers());
+		request.setAttribute("customersList", customerDao.getAllCustomers());
 		dispatcher.forward(request, response);
 	}
 

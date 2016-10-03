@@ -9,7 +9,7 @@
 <title>Add new animal</title>
 </head>
 <body>
-	<form method = "POST" action='CustomerServlet' name="formAddCustomer">
+	<form method = "POST" action='AnimalServlet' name="formAddAnimal">
 		Código do animal : <input 
 				type="text" readonly="readonly" name="code"
 				value="<c:out value="${animal.code}"/>" /> <br />
@@ -18,13 +18,13 @@
 				value="<c:out value="${animal.name}" />" /> <br />
 		Raça :	<input
 				type="text" name="breed"
-				value="<c:out value="${animal.breed.breed}" />" /> <br />
+				value="<c:out value="${animal.breed}" />" /> <br />
 		Idade :	<input
 				type="text" name="age"
-				value="<c:out value="${animal.age.age}" />" /> <br />
+				value="<c:out value="${animal.age}" />" /> <br />
 		Sexo :	<input
 				type="text" name="sex"
-				value="<c:out value="${animal.sex.sex}" />" /> <br />
+				value="<c:out value="${animal.sex}" />" /> <br />
 		<input type="submit" value="Submit" />	
 	</form>
 

@@ -39,7 +39,7 @@
 					<td><c:out value="${customer.address.neighborhood}" /></td>
 					<td><c:out value="${customer.address.city}" /></td>	
 					<td><c:out value="${customer.address.cep}" /></td>
-					<td><a href="CustomerServlet?action=pet&code=<c:out value="${customer.code}"/>">Pets</a></td>	
+					<td><a href="AnimalServlet?action=listAnimal&code=<c:out value="${customer.code}"/>">Pets</a></td>	
 					<td><a href="CustomerServlet?action=edit&code=<c:out value="${customer.code}"/>">Update</a></td>
 					<td><a href="CustomerServlet?action=delete&code=<c:out value="${customer.code}"/>">Delete</a></td>	
 				</tr>

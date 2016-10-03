@@ -9,8 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Animal;
-import model.Customer;
-
 
 public class AnimalDAO {
 	private Connection connection;
@@ -19,13 +17,13 @@ public class AnimalDAO {
 		this.connection = ConnectionFactory.getConnection();
 	}
 
-	public void addAnimal(Animal animal, Customer customer){
+	public void addAnimal(Animal animal){
 		String sql = "INSERT INTO Animal (id, name, breed, age, sex)"
 				+" values(?,?,?,?,?)";
 		try{
 			PreparedStatement preparedStatement = this.connection.prepareStatement(sql);
 
-			preparedStatement.setLong(1, customer.getCode());
+			preparedStatement.setLong(1, animal.getCode());
 			preparedStatement.setString(2, animal.getName());
 			preparedStatement.setString(3, animal.getBreed());
 			preparedStatement.setInt(4, animal.getAge());
@@ -74,6 +72,5 @@ public class AnimalDAO {
 		} catch(SQLException sqlException){
 			sqlException.printStackTrace();
 		}
-
 	}
 }
