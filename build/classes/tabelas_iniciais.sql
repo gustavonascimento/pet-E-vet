@@ -23,3 +23,17 @@ CREATE TABLE if NOT EXISTS `petevet`.`Customer` (
 )
 ENGINE = InnoDB;
 
+-- -----------------------------------------------------
+-- Table `petevet`.`Animal`
+-- -----------------------------------------------------
+CREATE TABLE if NOT EXISTS `petevet`.`Animal` (
+	`id` INT NOT NULL,
+	`name` VARCHAR(255) NOT NULL,
+	`breed` VARCHAR(255) NOT NULL,
+	`age` INT NOT NULL,
+	`sex` VARCHAR(1) NOT NULL,
+	PRIMARY KEY (`id`)
+)
+ENGINE = InnoDB;
+	
+

@@ -2,10 +2,12 @@ package model;
 
 public class Animal {
 
+	private Long code;
 	private String name;
 	private String breed;
 	private int age;
 	private char sex;
+	
 	public String getName() {
 		return name;
 	}
@@ -29,5 +31,11 @@ public class Animal {
 	}
 	public void setSex(char sex) {
 		this.sex = sex;
+	}
+	public Long getCode() {
+		return code;
+	}
+	public void setCode(Long code) {
+		this.code = code;
 	}
 }
