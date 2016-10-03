@@ -22,10 +22,9 @@ private Connection connection;
 		this.connection = ConnectionFactory.getConnection();
 	}
 	
-	public void addCustumer(Employee employee){
-		String sql = "INSERT INTO Customer (name, cpf, email, telephone,"
-				+ "date_of_birth, address, neighborhood, city, cep)"
-				+ " values(?,?,?,?,STR_TO_DATE(?,  \"%d/%m/%Y\"),?,?,?,?)";
+	public void addEmployee(Employee employee){
+		String sql = "INSERT INTO Emplyee(name, cpf, email, telephone, employee_role)"
+				+ " values(?,?,?,?,?)";
 		try{
 			PreparedStatement preparedStatement = this.connection.prepareStatement(sql);
 			
@@ -43,8 +42,8 @@ private Connection connection;
 		}
 	}
 	
-	public Employee searchCustomerByCode(Long code){
-		String sql = "SELECT * FROM Customer WHERE id = ?";
+	public Employee searchEmployeeByCode(Long code){
+		String sql = "SELECT * FROM Employee WHERE id = ?";
 		Employee employee = null;
 		try{
 			PreparedStatement prepareStatement = this.connection.prepareStatement(sql);
@@ -58,7 +57,7 @@ private Connection connection;
 				employee.setCpf(new Cpf(resultSet.getString("cpf")));
 				employee.setEmail(new Email(resultSet.getString("email")));
 				employee.setTelephone(new Telephone(resultSet.getString("telephone")));
-				//employee.setEmployeeRole(new employeeRole(resultSet.getString("atribuicao")));
+				employee.setEmployeeRole(resultSet.getString("atribuicao"));
 			} else {
 				// Returns a null customer.
 			}
