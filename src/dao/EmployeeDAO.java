@@ -21,7 +21,7 @@ private Connection connection;
 	}
 	
 	public void addEmployee(Employee employee){
-		String sql = "INSERT INTO Emplyee(name, cpf, email, telephone, employee_role)"
+		String sql = "INSERT INTO Employee(name, cpf, email, telephone, employee_role)"
 				+ " values(?,?,?,?,?)";
 		try{
 			PreparedStatement preparedStatement = this.connection.prepareStatement(sql);
@@ -55,7 +55,7 @@ private Connection connection;
 				employee.setCpf(new Cpf(resultSet.getString("cpf")));
 				employee.setEmail(new Email(resultSet.getString("email")));
 				employee.setTelephone(new Telephone(resultSet.getString("telephone")));
-				employee.setEmployeeRole(resultSet.getString("atribuicao"));
+				employee.setEmployeeRole(resultSet.getString("employee_role"));
 			} else {
 				// Returns a null customer.
 			}
@@ -81,7 +81,7 @@ private Connection connection;
 				employee.setCpf(new Cpf(resultSet.getString("cpf")));
 				employee.setEmail(new Email(resultSet.getString("email")));
 				employee.setTelephone(new Telephone(resultSet.getString("telephone")));
-				employee.setEmployeeRole(resultSet.getString("role"));
+				employee.setEmployeeRole(resultSet.getString("employee_role"));
 				
 				employeesList.add(employee);
 			}
@@ -92,7 +92,7 @@ private Connection connection;
 	}
 	
 	public void updateEmployee(Employee employee) {
-		String sql = "UPDATE Employee SET name=?, cpf=?, email=?, telephone=?, role=?"
+		String sql = "UPDATE Employee SET name=?, cpf=?, email=?, telephone=?, employee_role=?"
 				
 				+"WHERE id=?";
 		try{

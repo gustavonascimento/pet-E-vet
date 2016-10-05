@@ -44,7 +44,7 @@ public class EmployeeServlet extends HttpServlet{
 			Long code = Long.parseLong(request.getParameter("code"));
 			employeeDao.deleteEmployee(code);
 			forward = LIST_USER;
-			request.setAttribute("customersList", employeeDao.getAllEmployees());
+			request.setAttribute("employeeList", employeeDao.getAllEmployees());
 		}else if(action.equalsIgnoreCase("edit")){
 			forward = INSERT_OR_EDIT;
 			Long code = Long.parseLong(request.getParameter("code"));
@@ -52,7 +52,7 @@ public class EmployeeServlet extends HttpServlet{
 			request.setAttribute("employee", employee);
 		} else if(action.equalsIgnoreCase("listEmployee")){
 			forward = LIST_USER;
-			request.setAttribute("employeeList", employeeDao.getAllEmployees());
+			request.setAttribute("employeesList", employeeDao.getAllEmployees());
 		} else {
 			forward = INSERT_OR_EDIT;
 		}
@@ -70,7 +70,7 @@ public class EmployeeServlet extends HttpServlet{
 		employee.setCpf(new Cpf(request.getParameter("cpf")));
 		employee.setEmail(new Email(request.getParameter("email")));
 		employee.setTelephone(new Telephone(request.getParameter("telephone")));
-		employee.setEmployeeRole(request.getParameter("role"));
+		employee.setEmployeeRole(request.getParameter("employee_role"));
 		
 		String code = request.getParameter("code");
 		if (code == null || code.isEmpty()){
@@ -82,7 +82,7 @@ public class EmployeeServlet extends HttpServlet{
 		
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(LIST_USER);
-		request.setAttribute("customersList", employeeDao.getAllEmployees());
+		request.setAttribute("employeesList", employeeDao.getAllEmployees());
 		dispatcher.forward(request, response);
 	}
 }

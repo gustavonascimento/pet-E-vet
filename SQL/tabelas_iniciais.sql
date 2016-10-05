@@ -46,7 +46,7 @@ CREATE TABLE if NOT EXISTS `petevet`.`Employee` (
 	`cpf` VARCHAR(11) NOT NULL,
 	`email` VARCHAR(255) NOT NULL,
 	`telephone` VARCHAR(255) NOT NULL,
-	`atribuicao` VARCHAR(255) NOT NULL,
+	`employee_role` VARCHAR(255) NOT NULL,
 	PRIMARY KEY (`id`)
 )
 ENGINE = InnoDB;

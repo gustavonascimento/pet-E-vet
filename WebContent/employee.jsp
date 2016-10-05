@@ -9,40 +9,25 @@
 <title>Employee</title>
 </head>
 <body>
-	<form method = "POST" action='CustomerServlet' name="formAddCustomer">
-		Código do cliente : <input 
+	<form method = "POST" action='EmployeeServlet' name="formAddEmployee">
+		Código do Funcionário : <input 
 				type="text" readonly="readonly" name="code"
-				value="<c:out value="${customer.code}"/>" /> <br />
+				value="<c:out value="${employee.code}"/>" /> <br />
 		Nome :	<input
 				type="text" name="name"
-				value="<c:out value="${user.name}" />" /> <br />
+				value="<c:out value="${employee.name}" />" /> <br />
 		CPF :	<input
 				type="text" name="cpf"
-				value="<c:out value="${user.cpf.cpf}" />" /> <br />
+				value="<c:out value="${employee.cpf.cpf}" />" /> <br />
 		Email :	<input
 				type="text" name="email"
-				value="<c:out value="${user.email.email}" />" /> <br />
+				value="<c:out value="${employee.email.email}" />" /> <br />
 		Telefone :	<input
 				type="text" name="telephone"
-				value="<c:out value="${user.telephone.telephone}" />" /> <br />
-		Data de Nascimento :	<input
-				type="text" name="date_of_birth"
-				value="<c:out value="${user.date_of_birth}" />" /> <br />
-		Endereço :	<input
-				type="text" name="address"
-				value="<c:out value="${user.address.address}" />" /> <br />
-		Bairro :	<input
-				type="text" name="neighborhood"
-				value="<c:out value="${user.address.neighborhood}" />" /> <br />
-		Cidade :	<input
-				type="text" name="city"
-				value="<c:out value="${user.address.city}" />" /> <br />
-		CEP :	<input
-				type="text" name="cep"
-				value="<c:out value="${user.address.cep}" />" /> <br />
+				value="<c:out value="${employee.telephone.telephone}" />" /> <br />
 		Cargo/Função:	<input
 				type="text" name="employee_role"
-				value="<c:out value="${user.employee.role}" />" /> <br />
+				value="<c:out value="${employee.role}" />" /> <br />
 		<input type="submit" value="Submit" />	
 	</form>
 
