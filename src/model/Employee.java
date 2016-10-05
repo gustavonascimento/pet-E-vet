@@ -11,5 +11,12 @@ public class Employee extends Person {
 	public void setEmployeeRole(String employeeRole) {
 		this.employeeRole = employeeRole;
 	}
-
+	
+	@Override
+	public String toString() {
+		return "Employee [code=" + getCode() + ", name=" + getName() +
+				", cpf=" + getCpf().getCpf() + ", email=" + getEmail().getEmail() + ", telephone" + 
+				getTelephone().getTelephone() + ", role=" + getEmployeeRole() + "]";
+	}
+	
 }

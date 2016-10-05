@@ -8,9 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Customer;
 import model.Employee;
-import util.Address;
 import util.Cpf;
 import util.Email;
 import util.Telephone;
@@ -83,7 +81,8 @@ private Connection connection;
 				employee.setCpf(new Cpf(resultSet.getString("cpf")));
 				employee.setEmail(new Email(resultSet.getString("email")));
 				employee.setTelephone(new Telephone(resultSet.getString("telephone")));
-		
+				employee.setEmployeeRole(resultSet.getString("role"));
+				
 				employeesList.add(employee);
 			}
 		} catch (SQLException sqlException){
@@ -92,8 +91,8 @@ private Connection connection;
 		return employeesList;
 	}
 	
-	public void updateCustomer(Employee employee) {
-		String sql = "UPDATE Employee SET name=?, cpf=?, email=?, telephone=?,"
+	public void updateEmployee(Employee employee) {
+		String sql = "UPDATE Employee SET name=?, cpf=?, email=?, telephone=?, role=?"
 				
 				+"WHERE id=?";
 		try{
@@ -103,6 +102,7 @@ private Connection connection;
 			preparedStatement.setString(2, employee.getCpf().getCpf());
 			preparedStatement.setString(3, employee.getEmail().getEmail());
 			preparedStatement.setString(4, employee.getTelephone().getTelephone());
+			preparedStatement.setString(5, employee.getEmployeeRole());
 			preparedStatement.setLong(10, employee.getCode());
 			
 			preparedStatement.executeUpdate();
