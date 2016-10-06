@@ -35,21 +35,5 @@ CREATE TABLE if NOT EXISTS `petevet`.`Animal` (
 	PRIMARY KEY (`id`)
 )
 ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `petevet`.`Employee`
--- -----------------------------------------------------
-CREATE TABLE if NOT EXISTS `petevet`.`Employee` (
-	`id` INT NOT NULL AUTO_INCREMENT,
-	`name` VARCHAR(255) NOT NULL,
-	`cpf` VARCHAR(11) NOT NULL,
-	`email` VARCHAR(255) NOT NULL,
-	`telephone` VARCHAR(255) NOT NULL,
-	`role` VARCHAR(255) NOT NULL,
-	PRIMARY KEY (`id`)
-)
-ENGINE = InnoDB;
-
 	
 
