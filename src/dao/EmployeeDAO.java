@@ -21,7 +21,7 @@ private Connection connection;
 	}
 	
 	public void addEmployee(Employee employee){
-		String sql = "INSERT INTO Employee(name, cpf, email, telephone, employee_role)"
+		String sql = "INSERT INTO Employee" + "(name, cpf, email, telephone, role)"
 				+ " values(?,?,?,?,?)";
 		try{
 			PreparedStatement preparedStatement = this.connection.prepareStatement(sql);
@@ -30,7 +30,7 @@ private Connection connection;
 			preparedStatement.setString(2, employee.getCpf().getCpf());
 			preparedStatement.setString(3, employee.getEmail().getEmail());
 			preparedStatement.setString(4, employee.getTelephone().getTelephone());
-			preparedStatement.setString(5, employee.getEmployeeRole());
+			preparedStatement.setString(5, employee.getRole());
 			
 			preparedStatement.execute();
 			preparedStatement.close();
@@ -55,9 +55,9 @@ private Connection connection;
 				employee.setCpf(new Cpf(resultSet.getString("cpf")));
 				employee.setEmail(new Email(resultSet.getString("email")));
 				employee.setTelephone(new Telephone(resultSet.getString("telephone")));
-				employee.setEmployeeRole(resultSet.getString("employee_role"));
+				employee.setRole(resultSet.getString("role"));
 			} else {
-				// Returns a null customer.
+				// Returns a null employee.
 			}
 			resultSet.close();
 			prepareStatement.close();
@@ -81,7 +81,7 @@ private Connection connection;
 				employee.setCpf(new Cpf(resultSet.getString("cpf")));
 				employee.setEmail(new Email(resultSet.getString("email")));
 				employee.setTelephone(new Telephone(resultSet.getString("telephone")));
-				employee.setEmployeeRole(resultSet.getString("employee_role"));
+				employee.setRole(resultSet.getString("role"));
 				
 				employeesList.add(employee);
 			}
@@ -92,7 +92,7 @@ private Connection connection;
 	}
 	
 	public void updateEmployee(Employee employee) {
-		String sql = "UPDATE Employee SET name=?, cpf=?, email=?, telephone=?, employee_role=?"
+		String sql = "UPDATE Employee SET name=?, cpf=?, email=?, telephone=?, role=?"
 				
 				+"WHERE id=?";
 		try{
@@ -102,7 +102,7 @@ private Connection connection;
 			preparedStatement.setString(2, employee.getCpf().getCpf());
 			preparedStatement.setString(3, employee.getEmail().getEmail());
 			preparedStatement.setString(4, employee.getTelephone().getTelephone());
-			preparedStatement.setString(5, employee.getEmployeeRole());
+			preparedStatement.setString(5, employee.getRole());
 			preparedStatement.setLong(10, employee.getCode());
 			
 			preparedStatement.executeUpdate();

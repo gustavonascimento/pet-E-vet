@@ -70,7 +70,7 @@ public class EmployeeServlet extends HttpServlet{
 		employee.setCpf(new Cpf(request.getParameter("cpf")));
 		employee.setEmail(new Email(request.getParameter("email")));
 		employee.setTelephone(new Telephone(request.getParameter("telephone")));
-		employee.setEmployeeRole(request.getParameter("employee_role"));
+		employee.setRole(request.getParameter("role"));
 		
 		String code = request.getParameter("code");
 		if (code == null || code.isEmpty()){

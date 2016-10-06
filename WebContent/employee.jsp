@@ -26,7 +26,7 @@
 				type="text" name="telephone"
 				value="<c:out value="${employee.telephone.telephone}" />" /> <br />
 		Cargo/Função:	<input
-				type="text" name="employee_role"
+				type="text" name="role"
 				value="<c:out value="${employee.role}" />" /> <br />
 		<input type="submit" value="Submit" />	
 	</form>
