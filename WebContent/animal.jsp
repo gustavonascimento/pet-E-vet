@@ -10,9 +10,9 @@
 </head>
 <body>
 	<form method = "POST" action='AnimalServlet' name="formAddAnimal">
-		Código do animal : <input 
+		Code : <input 
 				type="text" readonly="readonly" name="code"
-				value="<c:out value="${animal.code}"/>" /> <br />
+				value="<c:out value="${customer.code}"/>" /> <br />
 		Nome :	<input
 				type="text" name="name"
 				value="<c:out value="${animal.name}" />" /> <br />

@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Animal;
+import model.Customer;
 import dao.AnimalDAO;
+import dao.CustomerDAO;
 
 /**
  * Servlet implementation class AnimalServlet
@@ -20,8 +22,9 @@ public class AnimalServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
     private static String LIST_ANIMALS = "/listAnimal.jsp";
-    private static String INSERT_OR_EDIT = "/animal.jsp";
+    private static String INSERT = "/animal.jsp";
     private AnimalDAO animalDao;
+    private CustomerDAO customerDao;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -29,6 +32,7 @@ public class AnimalServlet extends HttpServlet {
     public AnimalServlet() {
         super();
         animalDao = new AnimalDAO();
+        customerDao = new CustomerDAO();
     }
 
 	/**
@@ -50,8 +54,14 @@ public class AnimalServlet extends HttpServlet {
 			forward = LIST_ANIMALS;
 			Long code = Long.parseLong(request.getParameter("code"));
 			request.setAttribute("animalsList", animalDao.listAnimalsForACustomer(code));
+			
+		}else if (action.equalsIgnoreCase("insert")){
+			forward = INSERT;
+			Long code = Long.parseLong(request.getParameter("code"));
+			Customer customer = customerDao.searchCustomerByCode(code);
+			request.setAttribute("customer", customer);
 		}else{
-			forward = INSERT_OR_EDIT;
+			forward = INSERT;
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(forward);

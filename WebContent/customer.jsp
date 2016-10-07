@@ -10,36 +10,36 @@
 </head>
 <body>
 	<form method = "POST" action='CustomerServlet' name="formAddCustomer">
-		Código do cliente : <input 
+		Code : <input 
 				type="text" readonly="readonly" name="code"
 				value="<c:out value="${customer.code}"/>" /> <br />
 		Nome :	<input
 				type="text" name="name"
-				value="<c:out value="${user.name}" />" /> <br />
+				value="<c:out value="${customer.name}" />" /> <br />
 		CPF :	<input
 				type="text" name="cpf"
-				value="<c:out value="${user.cpf.cpf}" />" /> <br />
+				value="<c:out value="${customer.cpf.cpf}" />" /> <br />
 		Email :	<input
 				type="text" name="email"
-				value="<c:out value="${user.email.email}" />" /> <br />
+				value="<c:out value="${customer.email.email}" />" /> <br />
 		Telefone :	<input
 				type="text" name="telephone"
-				value="<c:out value="${user.telephone.telephone}" />" /> <br />
+				value="<c:out value="${customer.telephone.telephone}" />" /> <br />
 		Data de Nascimento :	<input
 				type="text" name="date_of_birth"
-				value="<c:out value="${user.date_of_birth}" />" /> <br />
+				value="<c:out value="${customer.date_of_birth}" />" /> <br />
 		Endereço :	<input
 				type="text" name="address"
-				value="<c:out value="${user.address.address}" />" /> <br />
+				value="<c:out value="${customer.address.address}" />" /> <br />
 		Bairro :	<input
 				type="text" name="neighborhood"
-				value="<c:out value="${user.address.neighborhood}" />" /> <br />
+				value="<c:out value="${customer.address.neighborhood}" />" /> <br />
 		Cidade :	<input
 				type="text" name="city"
-				value="<c:out value="${user.address.city}" />" /> <br />
+				value="<c:out value="${customer.address.city}" />" /> <br />
 		CEP :	<input
 				type="text" name="cep"
-				value="<c:out value="${user.address.cep}" />" /> <br />
+				value="<c:out value="${customer.address.cep}" />" /> <br />
 		<input type="submit" value="Submit" />	
 	</form>
 

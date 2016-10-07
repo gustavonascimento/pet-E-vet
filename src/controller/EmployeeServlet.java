@@ -22,7 +22,7 @@ import util.Telephone;
 public class EmployeeServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
     private static String INSERT_OR_EDIT = "/employee.jsp";
-    private static String LIST_USER = "/listEmployee.jsp";
+    private static String LIST_EMPLOYEE = "/listEmployee.jsp";
     private EmployeeDAO employeeDao;
     
     /**
@@ -43,7 +43,7 @@ public class EmployeeServlet extends HttpServlet{
 		if(action.equalsIgnoreCase("delete")){
 			Long code = Long.parseLong(request.getParameter("code"));
 			employeeDao.deleteEmployee(code);
-			forward = LIST_USER;
+			forward = LIST_EMPLOYEE;
 			request.setAttribute("employeeList", employeeDao.getAllEmployees());
 		}else if(action.equalsIgnoreCase("edit")){
 			forward = INSERT_OR_EDIT;
@@ -51,7 +51,7 @@ public class EmployeeServlet extends HttpServlet{
 			Employee employee = employeeDao.searchEmployeeByCode(code);
 			request.setAttribute("employee", employee);
 		} else if(action.equalsIgnoreCase("listEmployee")){
-			forward = LIST_USER;
+			forward = LIST_EMPLOYEE;
 			request.setAttribute("employeesList", employeeDao.getAllEmployees());
 		} else {
 			forward = INSERT_OR_EDIT;
@@ -81,7 +81,7 @@ public class EmployeeServlet extends HttpServlet{
 		}
 		
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher(LIST_USER);
+		RequestDispatcher dispatcher = request.getRequestDispatcher(LIST_EMPLOYEE);
 		request.setAttribute("employeesList", employeeDao.getAllEmployees());
 		dispatcher.forward(request, response);
 	}
