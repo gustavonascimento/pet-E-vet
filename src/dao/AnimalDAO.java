@@ -39,7 +39,7 @@ public class AnimalDAO {
 
 	public List<Animal> listAnimalsForACustomer(Long code){
 		List<Animal> animalsList = new ArrayList<Animal>();
-		String sql = "SELECT name,breed,age,sex FROM Animal WHERE id =?";
+		String sql = "SELECT id, name,breed,age,sex FROM Animal WHERE id =?";
 		
 		try{
 			PreparedStatement statement = this.connection.prepareStatement(sql);
@@ -48,6 +48,7 @@ public class AnimalDAO {
 			ResultSet resultSet = statement.executeQuery();
 			while(resultSet.next()){
 				Animal animal = new Animal();
+				animal.setCode(code);
 				animal.setName(resultSet.getString("name"));
 				animal.setBreed(resultSet.getString("breed"));
 				animal.setAge(resultSet.getInt("age"));

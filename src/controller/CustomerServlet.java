@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.Customer;
 import util.Address;
@@ -84,7 +85,6 @@ public class CustomerServlet extends HttpServlet {
 			customer.setCode(Long.parseLong(code));
 			customerDao.updateCustomer(customer);
 		}
-		
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(LIST_USER);
 		request.setAttribute("customersList", customerDao.getAllCustomers());

@@ -53,6 +53,8 @@ public class AnimalServlet extends HttpServlet {
 		else if(action.equalsIgnoreCase("listAnimal")){
 			forward = LIST_ANIMALS;
 			Long code = Long.parseLong(request.getParameter("code"));
+			Customer customer = customerDao.searchCustomerByCode(code);
+			request.setAttribute("customer", customer);
 			request.setAttribute("animalsList", animalDao.listAnimalsForACustomer(code));
 			
 		}else if (action.equalsIgnoreCase("insert")){
@@ -60,6 +62,7 @@ public class AnimalServlet extends HttpServlet {
 			Long code = Long.parseLong(request.getParameter("code"));
 			Customer customer = customerDao.searchCustomerByCode(code);
 			request.setAttribute("customer", customer);
+
 		}else{
 			forward = INSERT;
 		}
@@ -85,6 +88,8 @@ public class AnimalServlet extends HttpServlet {
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(LIST_ANIMALS);
 		Long code = Long.parseLong(request.getParameter("code"));
+		Customer customer = customerDao.searchCustomerByCode(code);
+		request.setAttribute("customer", customer);
 		request.setAttribute("animalsList", animalDao.listAnimalsForACustomer(code));
 		dispatcher.forward(request, response);
 	}

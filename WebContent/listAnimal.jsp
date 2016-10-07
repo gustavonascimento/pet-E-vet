@@ -1,4 +1,4 @@
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -7,6 +7,42 @@
 <title>Show All Customers</title>
 </head>
 <body>
+	<table border=1>
+		<thead>
+			<tr>
+				<th>Code</th>
+				<th>Nome</th>
+				<th>CPF</th>
+				<th>Email</th>
+				<th>Telefone</th>
+				<th>Data de Nascimento</th>
+				<th>Endereço</th>
+				<th>Bairro</th>
+				<th>Cidade</th>
+				<th>CEP</th>
+				<th>Adicionar Pet</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><c:out value="${customer.code}" /></td>
+				<td><c:out value="${customer.name}" /></td>
+				<td><c:out value="${customer.cpf.cpf}" /></td>
+				<td><c:out value="${customer.email.email}" /></td>
+				<td><c:out value="${customer.telephone.telephone}" /></td>
+				<td><c:out value="${customer.date_of_birth}" /></td>
+				<td><c:out value="${customer.address.address}" /></td>
+				<td><c:out value="${customer.address.neighborhood}" /></td>
+				<td><c:out value="${customer.address.city}" /></td>
+				<td><c:out value="${customer.address.cep}" /></td>
+				<td><a
+					href="AnimalServlet?action=insert&code=<c:out value="${customer.code}"/>">Cadastrar
+						Animal</a></td>
+			</tr>
+		</tbody>
+	</table>
+	<br></br>
+	<p>
 	<table border=1>
 		<thead>
 			<tr>
@@ -21,16 +57,17 @@
 		<tbody>
 			<c:forEach items="${animalsList}" var="animal">
 				<tr>
-					<td><c:out value="${animal.code}"/></td>
+					<td><c:out value="${animal.code}" /></td>
 					<td><c:out value="${animal.name}" /></td>
 					<td><c:out value="${animal.breed}" /></td>
 					<td><c:out value="${animal.age}" /></td>
 					<td><c:out value="${animal.sex}" /></td>
-					<td><a href="AnimalServlet?action=deleteAnimal&code=<c:out value="${animal.code}"/>">Delete</a></td>	
+					<td><a
+						href="AnimalServlet?action=deleteAnimal&code=<c:out value="${animal.code}"/>">Delete</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
-	<p><a href="AnimalServlet?action=insert&code=<c:out value="${customer.code}"/>">Cadastrar Animal</a></p>		
+	</p>
 </body>
 </html>
