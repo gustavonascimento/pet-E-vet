@@ -69,5 +69,6 @@
 		</tbody>
 	</table>
 	</p>
+	<p><a href="CustomerServlet?action=listCustomer">Voltar</a></p>
 </body>
 </html>
