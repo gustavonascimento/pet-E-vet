@@ -6,9 +6,24 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Show All Employees</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Style geral -->
+<title>Pet e-Vet</title>
+<link rel="stylesheet" href="bootstrap/css/style.css">
+
 </head>
 <body>
+<%@include file='shared/navbar.html'%>
+<br></br>
+<br></br>
 	<table border=1>
 		<thead>
 			<tr>
@@ -37,6 +52,7 @@
 			</c:forEach>
 		</tbody>
 	</table>
-	<p><a href="EmployeeServlet?action=insert">Cadastrar Funcionário</a></p>		
+	<p><a href="EmployeeServlet?action=insert">Cadastrar Funcionário</a></p>	
+	<%@include file='shared/footer.html'%>	
 </body>
 </html>

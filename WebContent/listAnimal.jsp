@@ -4,9 +4,24 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Show All Customers</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Style geral -->
+<title>Pet e-Vet</title>
+<link rel="stylesheet" href="bootstrap/css/style.css">
+
 </head>
 <body>
+<%@include file='shared/navbar.html'%>
+<br></br>
+<br></br>
 	<table border=1>
 		<thead>
 			<tr>
@@ -63,12 +78,12 @@
 					<td><c:out value="${animal.age}" /></td>
 					<td><c:out value="${animal.sex}" /></td>
 					<td><a
-						href="AnimalServlet?action=deleteAnimal&code=<c:out value="${animal.code}"/>">Delete</a></td>
+						href="AnimalServlet?action=deleteAnimal&name=<c:out value="${animal.name}"/>">Delete</a></td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
 	</p>
-	<p><a href="CustomerServlet?action=listCustomer">Voltar</a></p>
+	<%@include file='shared/footer.html'%>
 </body>
 </html>
