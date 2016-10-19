@@ -3,7 +3,7 @@ package model;
 public class Owner extends Person {
 	
 	private String id;
-	private String senha;
+	private String password;
 	
 	public String getId() {
 		return id;
@@ -11,11 +11,11 @@ public class Owner extends Person {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getSenha() {
-		return senha;
+	public String getPassword() {
+		return password;
 	}
-	public void setSenha(String senha) {
-		this.senha = senha;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 
