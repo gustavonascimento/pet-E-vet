@@ -23,7 +23,7 @@ import util.Telephone;
 public class OwnerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private static String INSERT_OR_EDIT = "/owner.jsp";
-    private static String LIST_OWNER = "/listOwnerr.jsp";
+    private static String LIST_OWNER = "/listOwner.jsp";
     private OwnerDAO ownerDao;
     
     /**

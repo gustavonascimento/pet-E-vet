@@ -1,5 +1,8 @@
 package dao;
 
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,21 +27,40 @@ public class OwnerDAO {
 	
 	public void addOwner(Owner owner){
 		String sql = "INSERT INTO Owner" + "(name, cpf, email, telephone, password)"
-				+ " values(?,?,?,?,?,?)";
+				+ " values(?,?,?,?,?)";
+		
+		String passwordSHA = owner.getPassword();
+		
 		try{
 			PreparedStatement preparedStatement = this.connection.prepareStatement(sql);
+			MessageDigest md = MessageDigest.getInstance("SHA-256");
+			byte messageDigest[] = md.digest(passwordSHA.getBytes("UTF-8"));
+			
+			StringBuilder sb = new StringBuilder();
+			
+			for(byte b : messageDigest) {
+				sb.append(String.format("%02X", 0xFF & b));
+			}
+			
+			String passwordHex = sb.toString();
 			
 			preparedStatement.setString(1, owner.getName());
 			preparedStatement.setString(2, owner.getCpf().getCpf());
 			preparedStatement.setString(3, owner.getEmail().getEmail());
 			preparedStatement.setString(4, owner.getTelephone().getTelephone());
-			preparedStatement.setString(5, owner.getPassword());
+			preparedStatement.setString(5, passwordHex);
 			
 			preparedStatement.execute();
 			preparedStatement.close();
 			
 		} catch(SQLException sqlException){
 			sqlException.printStackTrace();
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 	
