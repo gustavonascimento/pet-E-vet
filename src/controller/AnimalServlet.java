@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.Animal;
 import model.Customer;
@@ -41,18 +42,20 @@ public class AnimalServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String forward = "";
 		String action = request.getParameter("action");
-
+		HttpSession session = request.getSession();
 			
 		if(action.equalsIgnoreCase("deleteAnimal")){
+			forward = LIST_ANIMALS;
 			String name = request.getParameter("name");
 			animalDao.deleteAnimal(name);
+			Customer customer = customerDao.searchCustomerByCode((Long)session.getAttribute("code"));
+			request.setAttribute("customer", customer);
+			request.setAttribute("animalsList", animalDao.listAnimalsForACustomer((Long)session.getAttribute("code")));
+			
+		}else if(action.equalsIgnoreCase("listAnimal")){
 			forward = LIST_ANIMALS;
 			Long code = Long.parseLong(request.getParameter("code"));
-			request.setAttribute("animalsList", animalDao.listAnimalsForACustomer(code));
-		}
-		else if(action.equalsIgnoreCase("listAnimal")){
-			forward = LIST_ANIMALS;
-			Long code = Long.parseLong(request.getParameter("code"));
+			session.setAttribute("code", code);
 			Customer customer = customerDao.searchCustomerByCode(code);
 			request.setAttribute("customer", customer);
 			request.setAttribute("animalsList", animalDao.listAnimalsForACustomer(code));
