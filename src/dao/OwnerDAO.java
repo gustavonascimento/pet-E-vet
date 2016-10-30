@@ -79,7 +79,7 @@ public class OwnerDAO {
 				owner.setCpf(new Cpf(resultSet.getString("cpf")));
 				owner.setEmail(new Email(resultSet.getString("email")));
 				owner.setTelephone(new Telephone(resultSet.getString("telephone")));
-				owner.setPassword(resultSet.getString("senha"));
+				owner.setPassword(resultSet.getString("passowrd"));
 			} else {
 				// Returns a null owner.
 			}
@@ -90,6 +90,34 @@ public class OwnerDAO {
 		}
 		return owner;
 	}
+	
+//	public Owner authentication(Owner owner){
+//		Owner ownerReturn = null;
+//		String sql = "SELECT * FROM Owner WHERE email = ? and password = ?";
+//		
+//		try{
+//			PreparedStatement prepareStatement = this.connection.prepareStatement(sql);
+//			prepareStatement.setLong(1, code);
+//			
+//			ResultSet resultSet = prepareStatement.executeQuery();
+//			if(resultSet.next()){
+//				owner = new Owner();
+//				owner.setCode(resultSet.getLong("id"));
+//				owner.setName(resultSet.getString("name"));
+//				owner.setCpf(new Cpf(resultSet.getString("cpf")));
+//				owner.setEmail(new Email(resultSet.getString("email")));
+//				owner.setTelephone(new Telephone(resultSet.getString("telephone")));
+//				owner.setPassword(resultSet.getString("senha"));
+//			} else {
+//				// Returns a null owner.
+//			}
+//			resultSet.close();
+//			prepareStatement.close();
+//		}catch(SQLException sqlException){
+//			sqlException.printStackTrace();
+//		}
+//		return owner;
+//	}
 	
 	public List<Owner> getAllOwners(){
 		List<Owner> ownersList = new ArrayList<Owner>();
