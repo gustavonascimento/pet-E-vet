@@ -7,6 +7,7 @@ public class Products {
 	private BigDecimal value;
 	private String description;
 	private int quantity;
+	private int id;
 	
 	public String getName() {
 		return name;
@@ -31,6 +32,12 @@ public class Products {
 	}
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	
