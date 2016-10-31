@@ -43,7 +43,7 @@ public class ProductServlet extends HttpServlet {
 			Long code = Long.parseLong(request.getParameter("code"));
 			productDao.deleteProducts(code);
 			forward = LIST_PRODUCT;
-			request.setAttribute("customersList", productDao.getAllProducts());
+			request.setAttribute("productList", productDao.getAllProducts());
 		}else if(action.equalsIgnoreCase("edit")){
 			forward = INSERT_OR_EDIT;
 			Long code = Long.parseLong(request.getParameter("code"));
@@ -51,7 +51,7 @@ public class ProductServlet extends HttpServlet {
 			request.setAttribute("product", product);
 		} else if(action.equalsIgnoreCase("listProduct")){
 			forward = LIST_PRODUCT;
-			request.setAttribute("productsList", productDao.getAllProducts());
+			request.setAttribute("productList", productDao.getAllProducts());
 		} else {
 			forward = INSERT_OR_EDIT;
 		}
@@ -79,7 +79,7 @@ public class ProductServlet extends HttpServlet {
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(LIST_PRODUCT);
-		request.setAttribute("prodctsList", productDao.getAllProducts());
+		request.setAttribute("productList", productDao.getAllProducts());
 		dispatcher.forward(request, response);
 	}
 
