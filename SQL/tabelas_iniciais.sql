@@ -32,7 +32,6 @@ CREATE TABLE if NOT EXISTS `petevet`.`Animal` (
 	`breed` VARCHAR(255) NOT NULL,
 	`age` INT NOT NULL,
 	`sex` VARCHAR(1) NOT NULL,
-	PRIMARY KEY (`id`)
 )
 ENGINE = InnoDB;
 

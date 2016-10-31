@@ -27,7 +27,7 @@ ENGINE = InnoDB;
 -- Table `petevet`.`Animal`
 -- -----------------------------------------------------
 CREATE TABLE if NOT EXISTS `petevet`.`Animal` (
-	`id` INT NOT NULL,
+	`id` INT NOT NULL AUTO_INCREMENT,
 	`name` VARCHAR(255) NOT NULL,
 	`breed` VARCHAR(255) NOT NULL,
 	`age` INT NOT NULL,
@@ -64,3 +64,15 @@ CREATE TABLE if NOT EXISTS `petevet`.`Owner` (
 )
 ENGINE = InnoDB;	
 
+-- -----------------------------------------------------
+-- Table `petevet`.`Products`
+-- -----------------------------------------------------
+CREATE TABLE if NOT EXISTS `petevet`.`Products` (
+	`id` INT NOT NULL AUTO_INCREMENT,
+	`name` VARCHAR(255) NOT NULL,
+	`value` DECIMAL(15,2) NOT NULL,
+	`description` VARCHAR(255) NOT NULL,
+	`quantity` INT NOT NULL,
+	PRIMARY KEY (`id`)
+)
+ENGINE = InnoDB;
