@@ -11,26 +11,26 @@ import java.util.List;
 import model.Product;
 
 
-public class ProductsDAO {
+public class ProductDAO {
 	
 private Connection connection;
 	
-	public ProductsDAO() {
+	public ProductDAO() {
 		this.connection = ConnectionFactory.getConnection();
 	}
 	
 	public void addProducts(Product products){
-		String sql = "INSERT INTO Products (name, value, description, quantity,"
+		String sql = "INSERT INTO Products (name, value,  quantity, description) "
 				+ " values(?,?,?,?)";
 		try{
 			PreparedStatement preparedStatement = this.connection.prepareStatement(sql);
 			
 			preparedStatement.setString(1, products.getName());
 			preparedStatement.setBigDecimal(2, products.getValue());
-			preparedStatement.setString(3, products.getDescription());
-			preparedStatement.setInt(4, products.getQuantity());
-			
+			preparedStatement.setInt(3, products.getQuantity());
+			preparedStatement.setString(4, products.getDescription());
 			preparedStatement.execute();
+			
 			preparedStatement.close();
 			
 		} catch(SQLException sqlException){
@@ -50,9 +50,9 @@ private Connection connection;
 				products = new Product();
 				products.setCode(resultSet.getLong("id"));
 				products.setName(resultSet.getString("name"));
-				products.setDescription(resultSet.getString("description"));
 				products.setValue(resultSet.getBigDecimal("value"));
 				products.setQuantity(resultSet.getInt("quantity"));
+				products.setDescription(resultSet.getString("description"));
 
 			} else {
 				
@@ -76,8 +76,9 @@ private Connection connection;
 				Product products = new Product();
 				products.setCode(resultSet.getLong("id"));
 				products.setName(resultSet.getString("name"));
-				products.setQuantity(resultSet.getInt("quantity"));
 				products.setValue(resultSet.getBigDecimal("value"));
+				products.setQuantity(resultSet.getInt("quantity"));
+				products.setDescription(resultSet.getString("description"));
 				
 				productsList.add(products);
 			}
@@ -88,15 +89,16 @@ private Connection connection;
 	}
 	
 	public void updateProducts(Product products) {
-		String sql = "UPDATE Products SET name=?, value=?, description=?, quantity=?,"
+		String sql = "UPDATE Products SET name=?, value=?,  quantity=?, description=?,"
 				+"WHERE id=?";
 		try{
 			PreparedStatement preparedStatement = this.connection.prepareStatement(sql);
 			
 			preparedStatement.setString(1, products.getName());
 			preparedStatement.setBigDecimal(2, products.getValue());
-			preparedStatement.setString(3, products.getDescription());
-			preparedStatement.setInt(4, products.getQuantity());
+			preparedStatement.setInt(3, products.getQuantity());
+			preparedStatement.setString(4, products.getDescription());
+
 			preparedStatement.setLong(10, products.getCode());
 			
 			preparedStatement.executeUpdate();

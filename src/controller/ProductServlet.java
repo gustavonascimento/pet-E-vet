@@ -11,17 +11,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Product;
-import dao.ProductsDAO;
+import dao.ProductDAO;
 
 /**
  * Servlet implementation class ProductsServlet
  */
-@WebServlet("/ProductsServlet")
+@WebServlet("/ProductServlet")
 public class ProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private static String INSERT_OR_EDIT = "/product.jsp";
     private static String LIST_PRODUCT = "/listProduct.jsp";
-	private ProductsDAO productsDao; 
+	private ProductDAO productDao; 
 	
        
     /**
@@ -29,7 +29,7 @@ public class ProductServlet extends HttpServlet {
      */
     public ProductServlet() {
         super();
-        productsDao = new ProductsDAO();
+        productDao = new ProductDAO();
     }
 
 	/**
@@ -41,17 +41,17 @@ public class ProductServlet extends HttpServlet {
 		
 		if(action.equalsIgnoreCase("delete")){
 			Long code = Long.parseLong(request.getParameter("code"));
-			productsDao.deleteProducts(code);
+			productDao.deleteProducts(code);
 			forward = LIST_PRODUCT;
-			request.setAttribute("customersList", productsDao.getAllProducts());
+			request.setAttribute("customersList", productDao.getAllProducts());
 		}else if(action.equalsIgnoreCase("edit")){
 			forward = INSERT_OR_EDIT;
 			Long code = Long.parseLong(request.getParameter("code"));
-			Product product = productsDao.searchProductsByCode(code);
+			Product product = productDao.searchProductsByCode(code);
 			request.setAttribute("product", product);
 		} else if(action.equalsIgnoreCase("listProduct")){
 			forward = LIST_PRODUCT;
-			request.setAttribute("productsList", productsDao.getAllProducts());
+			request.setAttribute("productsList", productDao.getAllProducts());
 		} else {
 			forward = INSERT_OR_EDIT;
 		}
@@ -72,14 +72,14 @@ public class ProductServlet extends HttpServlet {
 		
 		String code = request.getParameter("code");
 		if (code == null || code.isEmpty()){
-			productsDao.addProducts(product);
+			productDao.addProducts(product);
 		} else {
 			product.setCode(Long.parseLong(code));
-			productsDao.updateProducts(product);
+			productDao.updateProducts(product);
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(LIST_PRODUCT);
-		request.setAttribute("prodctsList", productsDao.getAllProducts());
+		request.setAttribute("prodctsList", productDao.getAllProducts());
 		dispatcher.forward(request, response);
 	}
 
