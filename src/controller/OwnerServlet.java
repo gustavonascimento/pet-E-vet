@@ -50,10 +50,10 @@ public class OwnerServlet extends HttpServlet {
 			forward = INSERT_OR_EDIT;
 			Long code = Long.parseLong(request.getParameter("code"));
 			Owner owner = ownerDao.searchOwnerByCode(code);
-			request.setAttribute("customer", owner);
-		} else if(action.equalsIgnoreCase("listCustomer")){
+			request.setAttribute("owner", owner);
+		} else if(action.equalsIgnoreCase("listOwner")){
 			forward = LIST_OWNER;
-			request.setAttribute("customersList", ownerDao.getAllOwners());
+			request.setAttribute("ownersList", ownerDao.getAllOwners());
 		} else {
 			forward = INSERT_OR_EDIT;
 		}

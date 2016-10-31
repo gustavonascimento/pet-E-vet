@@ -38,7 +38,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${ownersList}" var="employee">
+			<c:forEach items="${ownersList}" var="owner">
 				<tr>
 					<td><c:out value="${owner.code}"/></td>
 					<td><c:out value="${owner.name}" /></td>

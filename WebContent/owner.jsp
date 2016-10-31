@@ -41,7 +41,7 @@
 				type="text" name="telephone"
 				value="<c:out value="${owner.telephone.telephone}" />" /> <br />
 		Senha :	<input
-				type="text" name="password"
+				type="password" name="password"
 				value="<c:out value="${owner.password}" />" /> <br />
 				
 		<input type="submit" value="Submit" />	
