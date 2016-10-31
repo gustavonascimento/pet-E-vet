@@ -2,12 +2,12 @@ package model;
 
 import java.math.BigDecimal;
 
-public class Products {
+public class Product {
 	private String name;
 	private BigDecimal value;
 	private String description;
 	private int quantity;
-	private int id;
+	private Long code;
 	
 	public String getName() {
 		return name;
@@ -33,11 +33,11 @@ public class Products {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	public int getId() {
-		return id;
+	public Long getCode() {
+		return code;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setCode(Long code) {
+		this.code = code;
 	}
 	
 	

@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Products;
+import model.Product;
 
 
 public class ProductsDAO {
@@ -19,7 +19,7 @@ private Connection connection;
 		this.connection = ConnectionFactory.getConnection();
 	}
 	
-	public void addProducts(Products products){
+	public void addProducts(Product products){
 		String sql = "INSERT INTO Products (name, value, description, quantity,"
 				+ " values(?,?,?,?)";
 		try{
@@ -38,24 +38,24 @@ private Connection connection;
 		}
 	}
 	
-	public Products searchProductsByCode(Long code){
+	public Product searchProductsByCode(Long code){
 		String sql = "SELECT * FROM Products WHERE id = ?";
-		Products products = null;
+		Product products = null;
 		try{
 			PreparedStatement prepareStatement = this.connection.prepareStatement(sql);
 			prepareStatement.setLong(1, code);
 			
 			ResultSet resultSet = prepareStatement.executeQuery();
 			if(resultSet.next()){
-				products = new Products();
-				products.setId(resultSet.getInt("id"));
+				products = new Product();
+				products.setCode(resultSet.getLong("id"));
 				products.setName(resultSet.getString("name"));
 				products.setDescription(resultSet.getString("description"));
 				products.setValue(resultSet.getBigDecimal("value"));
 				products.setQuantity(resultSet.getInt("quantity"));
 
 			} else {
-				// Returns a null customer.
+				
 			}
 			resultSet.close();
 			prepareStatement.close();
@@ -65,16 +65,16 @@ private Connection connection;
 		return products;
 	}
 	
-	public List<Products> getAllProducts(){
-		List<Products> productsList = new ArrayList<Products>();
+	public List<Product> getAllProducts(){
+		List<Product> productsList = new ArrayList<Product>();
 		
 		try{
 			Statement statement = this.connection.createStatement();
 			ResultSet resultSet = statement.executeQuery("SELECT * FROM Products");
 			
 			while(resultSet.next()){
-				Products products = new Products();
-				products.setId(resultSet.getInt("id"));
+				Product products = new Product();
+				products.setCode(resultSet.getLong("id"));
 				products.setName(resultSet.getString("name"));
 				products.setQuantity(resultSet.getInt("quantity"));
 				products.setValue(resultSet.getBigDecimal("value"));
@@ -87,7 +87,7 @@ private Connection connection;
 		return productsList;
 	}
 	
-	public void updateProducts(Products products) {
+	public void updateProducts(Product products) {
 		String sql = "UPDATE Products SET name=?, value=?, description=?, quantity=?,"
 				+"WHERE id=?";
 		try{
@@ -97,7 +97,7 @@ private Connection connection;
 			preparedStatement.setBigDecimal(2, products.getValue());
 			preparedStatement.setString(3, products.getDescription());
 			preparedStatement.setInt(4, products.getQuantity());
-			preparedStatement.setInt(10, products.getId());
+			preparedStatement.setLong(10, products.getCode());
 			
 			preparedStatement.executeUpdate();
 		} catch (SQLException sqlException){
@@ -105,17 +105,15 @@ private Connection connection;
 		}
 	}
 	
-	public void deleteProducts(int id){
-		String sql = "DELETE FROM Customer WHERE id=?";
+	public void deleteProducts(Long code){
+		String sql = "DELETE FROM Products WHERE id=?";
 		try{
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
-			preparedStatement.setLong(1, id);
+			preparedStatement.setLong(1, code);
 			preparedStatement.executeUpdate();
 			
 		} catch(SQLException sqlException){
 			sqlException.printStackTrace();
 		}
 	}
-	
 }
-
