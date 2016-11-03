@@ -1,9 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>    
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang = "pt-br">
 <head>
 <%@include file='shared/head.html'%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -25,39 +23,54 @@
 <%@include file='shared/navbar.html'%>
 <br></br>
 <br></br>
+
+<div style="width:200px;margin:auto;">
 	<form method = "POST" action='CustomerServlet' name="formAddCustomer">
-		Code : <input 
-				type="text" readonly="readonly" name="code"
+		<label for ="code"> Code: </label>	<br>
+	 	<input 
+				type="text" readonly="readonly" name="code"	
 				value="<c:out value="${customer.code}"/>" /> <br />
-		Nome :	<input
-				type="text" name="name"
+		<label for ="code"> Nome :	</label><br>
+		<input
+				id = "name" type="text" required="required" pattern="[a-zA-Z\s]+$" name="name" title="Apenas letras maiúsculas e minúsculas"
 				value="<c:out value="${customer.name}" />" /> <br />
-		CPF :	<input
-				type="text" name="cpf"
+		<label for ="code"> 	CPF : </label><br>
+		<input
+				type="text" required="required" pattern="[0-9]+$" name="cpf" title="Digite um CPF no formato: xxxxxxxxxxx"
 				value="<c:out value="${customer.cpf.cpf}" />" /> <br />
-		Email :	<input
-				type="text" name="email"
+		<label for ="code"> 	Email :	</label><br>
+		<input
+				type="email" required="required" class="input-text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="email" title="Digite um EMAIL no formato: email@valido.com"
 				value="<c:out value="${customer.email.email}" />" /> <br />
-		Telefone :	<input
-				type="text" name="telephone"
+		<label for ="code"> 	Telefone :	</label><br>
+		<input
+				type="text" required="required" pattern="\([0-9]{2}\) [0-9]{4,6}-[0-9]{3,4}$" maxlength="15" name="telephone" title="Digite um TELEFONE no formato: (xx) xxxx-xxxx"
 				value="<c:out value="${customer.telephone.telephone}" />" /> <br />
-		Data de Nascimento :	<input
-				type="text" name="date_of_birth"
+		<label for ="code"> 	Data de Nascimento :	</label><br>
+		<input
+				type="date" required="required" name="date_of_birth"
 				value="<c:out value="${customer.date_of_birth}" />" /> <br />
-		EndereÃ§o :	<input
-				type="text" name="address"
+		<label for ="code"> 	Endereço :	 </label><br>
+		<input
+				type="text" required="required" name="address" title="Apenas caracteres alfanuméricos"
 				value="<c:out value="${customer.address.address}" />" /> <br />
-		Bairro :	<input
-				type="text" name="neighborhood"
+		<label for ="code"> 	Bairro :	</label><br>
+		<input
+				type="text" required="required" name="neighborhood" title="Apenas caracteres alfanuméricos"
 				value="<c:out value="${customer.address.neighborhood}" />" /> <br />
-		Cidade :	<input
-				type="text" name="city"
+		<label for ="code"> 	Cidade : </label><br>
+		<input
+				type="text" required="required" name="city" title="Apenas letras"
 				value="<c:out value="${customer.address.city}" />" /> <br />
-		CEP :	<input
-				type="text" name="cep"
-				value="<c:out value="${customer.address.cep}" />" /> <br />
-		<input type="submit" value="Submit" />	
+		<label for ="code"> 	CEP :	 </label><br>
+		<input
+				type="text" required="required"  pattern="[0-9]+$" name="cep" title="Apenas caracteres numéricos"
+				value="<c:out value="${customer.address.cep}" />" /> <br /><br>
+				
+		<button type="submit"> Cadastrar</button>	
 	</form>
+	</div>
+	<br><br><br><br><br><br>
 <%@include file='shared/footer.html'%>
 </body>
 </html>

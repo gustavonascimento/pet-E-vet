@@ -26,7 +26,7 @@
 <br></br>
 <br></br>
 <p><h2>Clientes</h2></p>
-	<table align="center" style="width:100%" title="Clientes">
+	<table align="center" style="width:90%" title="Clientes">
 		<thead>
 			<tr>
 				<th>Code</th>

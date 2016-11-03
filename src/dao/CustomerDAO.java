@@ -24,7 +24,7 @@ public class CustomerDAO {
 	public void addCustumer(Customer customer){
 		String sql = "INSERT INTO Customer (name, cpf, email, telephone,"
 				+ "date_of_birth, address, neighborhood, city, cep)"
-				+ " values(?,?,?,?,STR_TO_DATE(?,  \"%d/%m/%Y\"),?,?,?,?)";
+				+ " values(?,?,?,?,?,?,?,?,?)";
 		try{
 			PreparedStatement preparedStatement = this.connection.prepareStatement(sql);
 			
@@ -106,7 +106,7 @@ public class CustomerDAO {
 	
 	public void updateCustomer(Customer customer) {
 		String sql = "UPDATE Customer SET name=?, cpf=?, email=?, telephone=?,"
-				+ "date_of_birth=STR_TO_DATE(?,  \"%d/%m/%Y\"), address=?, neighborhood=?, city=?, cep=?"
+				+ "date_of_birth=?, address=?, neighborhood=?, city=?, cep=?"
 				+"WHERE id=?";
 		try{
 			PreparedStatement preparedStatement = this.connection.prepareStatement(sql);
