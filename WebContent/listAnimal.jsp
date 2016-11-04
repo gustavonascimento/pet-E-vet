@@ -23,9 +23,11 @@
 <%@include file='shared/navbar.html'%>
 <br></br>
 <br></br>
-<p><h2>Cliente</h2></p>
-	<table  style="width:100%">
+	<table  style="width:90%" align="center" class="table">
 		<thead>
+			<tr>
+				<th><h2>Cliente</h2></th>
+			</tr>
 			<tr>
 				<th>Code</th>
 				<th>Nome</th>
@@ -59,10 +61,11 @@
 		</tbody>
 	</table>
 	<br></br>
-	<p>
-	<p><h2>Pets</h2></p>
-	<table style="width:50%">
+	<table style="width:50%" align="center" class="table">
 		<thead>
+			<tr>
+				<th><h2>Pets</h2></th>
+			</tr>
 			<tr>
 				<th>Code</th>
 				<th>Nome</th>

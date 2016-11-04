@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <%@include file='shared/head.html'%>
@@ -25,9 +25,11 @@
 <%@include file='shared/navbar.html'%>
 <br></br>
 <br></br>
-<p><h2>Funcionários</h2></p>
-	<table style="width:100%">
+	<table align="center" style="width:90%" class="table">
 		<thead>
+			<tr>
+				<th><h2>Funcionários</h2></th>
+			</tr>
 			<tr>
 				<th>Code</th>
 				<th>Nome</th>
@@ -52,10 +54,13 @@
 					<td><a href="EmployeeServlet?action=delete&code=<c:out value="${employee.code}"/>">Delete</a></td>	
 				</tr>
 			</c:forEach>
+		<tr>
+			<td><a href="EmployeeServlet?action=insert">Cadastrar Funcionário</a></td>
+		</tr>	
 		</tbody>
+		
 	</table>
 	<br></br>
-	<p><a href="EmployeeServlet?action=insert">Cadastrar Funcionário</a></p>	
 	<%@include file='shared/footer.html'%>	
 </body>
 </html>
