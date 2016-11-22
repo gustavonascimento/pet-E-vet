@@ -89,7 +89,7 @@ private Connection connection;
 	}
 	
 	public void updateProducts(Product products) {
-		String sql = "UPDATE Products SET name=?, value=?,  quantity=?, description=?,"
+		String sql = "UPDATE Products SET name=?, value=?,  quantity=?, description=?"
 				+"WHERE id=?";
 		try{
 			PreparedStatement preparedStatement = this.connection.prepareStatement(sql);
@@ -98,8 +98,7 @@ private Connection connection;
 			preparedStatement.setBigDecimal(2, products.getValue());
 			preparedStatement.setInt(3, products.getQuantity());
 			preparedStatement.setString(4, products.getDescription());
-
-			preparedStatement.setLong(10, products.getCode());
+			preparedStatement.setLong(5, products.getCode());
 			
 			preparedStatement.executeUpdate();
 		} catch (SQLException sqlException){

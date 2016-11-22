@@ -91,23 +91,32 @@ public class OwnerDAO {
 		return owner;
 	}
 	
-//	public Owner authentication(Owner owner){
+//	public Owner authentication(Owner owner) throws Exception{
 //		Owner ownerReturn = null;
+//		
+//		String passwordSHA = owner.getPassword();
+//		
 //		String sql = "SELECT * FROM Owner WHERE email = ? and password = ?";
 //		
 //		try{
 //			PreparedStatement prepareStatement = this.connection.prepareStatement(sql);
-//			prepareStatement.setLong(1, code);
+//			MessageDigest md = MessageDigest.getInstance("SHA-256");
+//			byte messageDigest[] = md.digest(passwordSHA.getBytes("UTF-8"));
+//			prepareStatement.setLong(1, hashCode());
+//			
+//			StringBuilder sb = new StringBuilder();
+//			
+//			for(byte b : messageDigest) {
+//				sb.append(String.format("%02X", 0xFF & b));
+//			}
+//			
+//			String passwordHex = sb.toString();
 //			
 //			ResultSet resultSet = prepareStatement.executeQuery();
 //			if(resultSet.next()){
 //				owner = new Owner();
-//				owner.setCode(resultSet.getLong("id"));
-//				owner.setName(resultSet.getString("name"));
-//				owner.setCpf(new Cpf(resultSet.getString("cpf")));
 //				owner.setEmail(new Email(resultSet.getString("email")));
-//				owner.setTelephone(new Telephone(resultSet.getString("telephone")));
-//				owner.setPassword(resultSet.getString("senha"));
+//				owner.setPassword(resultSet.getString("password"));
 //			} else {
 //				// Returns a null owner.
 //			}

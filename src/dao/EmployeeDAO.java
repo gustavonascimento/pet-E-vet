@@ -102,7 +102,7 @@ private Connection connection;
 			preparedStatement.setString(3, employee.getEmail().getEmail());
 			preparedStatement.setString(4, employee.getTelephone().getTelephone());
 			preparedStatement.setString(5, employee.getRole());
-			preparedStatement.setLong(10, employee.getCode());
+			preparedStatement.setLong(6, employee.getCode());
 			
 			preparedStatement.executeUpdate();
 		} catch (SQLException sqlException){
