@@ -4,15 +4,23 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public interface ConnectionFactory {
-	public static Connection getConnection(){
-		String conexao = "jdbc:mysql://localhost/petevet";
+public class ConnectionFactory {
+	private static Connection instance = null;
+	
+	public static synchronized Connection getConnection(){
+		
+		String connection = "jdbc:mysql://localhost/petevet";
 		String login = "root";
-		String senha = "root";
-
+		String password = "root";
+		
+		
 		try {
-			new com.mysql.jdbc.Driver();
-			return DriverManager.getConnection(conexao, login, senha);
+			if (instance == null){
+				new com.mysql.jdbc.Driver();
+				instance =  DriverManager.getConnection(connection, login, password);
+			}
+			return instance;
+			
 		} catch (SQLException e) {
 			throw new RuntimeException("Não foi possivel conectar ao banco de dados" + e);
 		}
