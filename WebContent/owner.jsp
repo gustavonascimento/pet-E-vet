@@ -1,8 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>    
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html >
 <html>
 <head>
 <%@include file='shared/head.html'%>
@@ -24,29 +22,36 @@
 <%@include file='shared/navbar.html'%>
 <br></br>
 <br></br>
+<div style="width:200px;margin:auto;">
 		<form method = "POST" action='OwnerServlet' name="formAddOwner">
-		Code : <input 
+		<label for ="code"> Code: </label>	<br>
+		<input 
 				type="text" readonly="readonly" name="code"
 				value="<c:out value="${owner.code}"/>" /> <br />
-		Nome :	<input
-				type="text" name="name"
+		<label for ="name"> Name: </label>	<br>
+		<input
+				type="text" required="required" pattern="[A-Za-zÀ-ú0-9., -]{5,}+$" name="name" title="Apenas letras maiúsculas e minúsculas"
 				value="<c:out value="${owner.name}" />" /> <br />
-		CPF :	<input
-				type="text" name="cpf"
+		<label for ="cpf"> CPF: </label>	<br>
+		<input
+				type="text" required="required" pattern="[0-9]+$" name="cpf" title="Digite um CPF no formato: xxxxxxxxxxx"
 				value="<c:out value="${owner.cpf.cpf}" />" /> <br />
-		Email :	<input
-				type="text" name="email"
+		<label for ="email"> Email: </label>	<br>
+		<input
+				type="email" required="required" class="input-text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="email" title="Digite um EMAIL no formato: email@valido.com"
 				value="<c:out value="${owner.email.email}" />" /> <br />
-		Telefone :	<input
-				type="text" name="telephone"
+		<label for ="telephone"> Telefone: </label>	<br>
+		<input
+				type="text" required="required" pattern="\([0-9]{2}\)? ?[0-9]{4,5}-[0-9]{4}$" maxlength="15" name="telephone" title="Digite um TELEFONE no formato: (xx) xxxx-xxxx "
 				value="<c:out value="${owner.telephone.telephone}" />" /> <br />
-		Senha :	<input
+		<label for ="password"> Senha: </label>	<br>
+		<input
 				type="password" name="password"
-				value="<c:out value="${owner.password}" />" /> <br />
+				value="<c:out value="${owner.password}" />" /> <br /><br />
 				
 		<input type="submit" value="Submit" />	
 	</form>
-	
+</div>
 <%@include file='shared/footer.html'%>
 </body>
 </html>
