@@ -54,11 +54,10 @@
 					<td><a href="EmployeeServlet?action=delete&code=<c:out value="${employee.code}"/>">Delete</a></td>	
 				</tr>
 			</c:forEach>
+		</tbody>
 		<tr>
 			<td><a href="EmployeeServlet?action=insert">Cadastrar Funcionário</a></td>
 		</tr>	
-		</tbody>
-		
 	</table>
 	<br></br>
 	<%@include file='shared/footer.html'%>	

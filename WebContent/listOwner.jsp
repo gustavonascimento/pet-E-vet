@@ -25,9 +25,12 @@
 <%@include file='shared/navbar.html'%>
 <br></br>
 <br></br>
-<p><h2>Administradores</h2></p>
-	<table style="width:100%">
+
+	<table align = "center" class = "table" style="width:90%">
 		<thead>
+			<tr>
+				<th><h2>Administradores</h2></th>
+			</tr>
 			<tr>
 				<th>Code</th>
 				<th>Nome</th>
@@ -51,9 +54,11 @@
 				</tr>
 			</c:forEach>
 		</tbody>
+		<tr>
+			<td><a href="OwnerServlet?action=insert">Cadastrar Administrador</a></td>		
+		</tr>
 	</table>
 	<br></br>
-	<p><a href="OwnerServlet?action=insert">Cadastrar Administrador</a></p>	
 	<%@include file='shared/footer.html'%>	
 </body>
 </html>
