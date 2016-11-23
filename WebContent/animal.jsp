@@ -1,8 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>    
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <%@include file='shared/head.html'%>
@@ -25,25 +23,32 @@
 <%@include file='shared/navbar.html'%>
 <br></br>
 <br></br>
+<div style="width:200px;margin:auto;">
 	<form method = "POST" action='AnimalServlet' name="formAddAnimal">
-		Code : <input 
+		<label for ="code"> Code: </label>	<br>
+		<input 
 				type="text" readonly="readonly" name="code"
 				value="<c:out value="${customer.code}"/>" /> <br />
-		Nome :	<input
-				type="text" name="name"
+		<label for ="name"> Nome: </label>	<br>
+		<input
+				id = "name" type="text" required="required" pattern="[a-zA-Z\s]+$" name="name" title="Apenas letras maiúsculas e minúsculas"
 				value="<c:out value="${animal.name}" />" /> <br />
-		RaÃ§a :	<input
-				type="text" name="breed"
+		<label for ="breed"> Raça: </label>	<br>
+		<input
+				type="text" required="required" pattern="[a-zA-Z\s]+$" name="breed" title="Apenas letras maiúsculas e minúsculas"
 				value="<c:out value="${animal.breed}" />" /> <br />
-		Idade :	<input
-				type="text" name="age"
+		<label for ="age"> Idade: </label>	<br>
+		<input
+				type="text" required="required"  pattern="[0-9]+$" name="age" title="Apenas caracteres numéricos"
 				value="<c:out value="${animal.age}" />" /> <br />
-		Sexo :	<input
-				type="text" name="sex"
-				value="<c:out value="${animal.sex}" />" /> <br />
+		<label for ="sex"> Sexo: </label>	<br>
+		<input
+				type="text" required="required" pattern="[a-zA-Z\s]+$" maxlength = "1" name="sex" title="Apenas uma letra M ou F"
+				value="<c:out value="${animal.sex}" />" /> <br /> <br />
+				
 		<input type="submit" value="Submit" />	
 	</form>
-
+</div>
 <%@include file='shared/footer.html'%>
 </body>
 </html>

@@ -30,39 +30,39 @@
 	 	<input 
 				type="text" readonly="readonly" name="code"	
 				value="<c:out value="${customer.code}"/>" /> <br />
-		<label for ="code"> Nome :	</label><br>
+		<label for ="name"> Nome :	</label><br>
 		<input
-				id = "name" type="text" required="required" pattern="[a-zA-Z\s]+$" name="name" title="Apenas letras maiúsculas e minúsculas"
+				id = "name" type="text" required="required" pattern="[A-Za-zÀ-ú0-9., -]{5,}+$" name="name" title="Apenas letras maiúsculas e minúsculas"
 				value="<c:out value="${customer.name}" />" /> <br />
-		<label for ="code"> 	CPF : </label><br>
+		<label for ="cpf"> 	CPF : </label><br>
 		<input
 				type="text" required="required" pattern="[0-9]+$" name="cpf" title="Digite um CPF no formato: xxxxxxxxxxx"
 				value="<c:out value="${customer.cpf.cpf}" />" /> <br />
-		<label for ="code"> 	Email :	</label><br>
+		<label for ="email"> 	Email :	</label><br>
 		<input
 				type="email" required="required" class="input-text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="email" title="Digite um EMAIL no formato: email@valido.com"
 				value="<c:out value="${customer.email.email}" />" /> <br />
-		<label for ="code"> 	Telefone :	</label><br>
+		<label for ="Telephone"> 	Telefone :	</label><br>
 		<input
-				type="text" required="required" pattern="\([0-9]{2}\) [0-9]{4,6}-[0-9]{3,4}$" maxlength="15" name="telephone" title="Digite um TELEFONE no formato: (xx) xxxx-xxxx"
+				type="text" required="required" pattern="\([0-9]{2}\)?\s?[0-9]{4,5}-[0-9]{4}$" maxlength="15" name="telephone" title="Digite um TELEFONE no formato: (xx) xxxx-xxxx"
 				value="<c:out value="${customer.telephone.telephone}" />" /> <br />
-		<label for ="code"> 	Data de Nascimento :	</label><br>
+		<label for ="dob"> 	Data de Nascimento :	</label><br>
 		<input
 				type="date" required="required" name="date_of_birth"
 				value="<c:out value="${customer.date_of_birth}" />" /> <br />
-		<label for ="code"> 	Endereço :	 </label><br>
+		<label for ="address"> 	Endereço :	 </label><br>
 		<input
 				type="text" required="required" name="address" title="Apenas caracteres alfanuméricos"
 				value="<c:out value="${customer.address.address}" />" /> <br />
-		<label for ="code"> 	Bairro :	</label><br>
+		<label for ="neighborhood"> 	Bairro :	</label><br>
 		<input
 				type="text" required="required" name="neighborhood" title="Apenas caracteres alfanuméricos"
 				value="<c:out value="${customer.address.neighborhood}" />" /> <br />
-		<label for ="code"> 	Cidade : </label><br>
+		<label for ="city"> 	Cidade : </label><br>
 		<input
 				type="text" required="required" name="city" title="Apenas letras"
 				value="<c:out value="${customer.address.city}" />" /> <br />
-		<label for ="code"> 	CEP :	 </label><br>
+		<label for ="cep"> 	CEP :	 </label><br>
 		<input
 				type="text" required="required"  pattern="[0-9]+$" name="cep" title="Apenas caracteres numéricos"
 				value="<c:out value="${customer.address.cep}" />" /> <br /><br>

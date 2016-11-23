@@ -22,7 +22,7 @@ private Connection connection;
 	
 	public void addEmployee(Employee employee){
 		String sql = "INSERT INTO Employee" + "(name, cpf, email, telephone, role)"
-				+ " values(?,?,?,?,?,?)";
+				+ " values(?,?,?,?,?)";
 		try{
 			PreparedStatement preparedStatement = this.connection.prepareStatement(sql);
 			

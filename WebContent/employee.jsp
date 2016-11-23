@@ -1,8 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>    
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <%@include file='shared/head.html'%>
@@ -25,27 +23,36 @@
 <%@include file='shared/navbar.html'%>
 <br></br>
 <br></br>
+<div style="width:200px;margin:auto;">
 	<form method = "POST" action='EmployeeServlet' name="formAddEmployee">
-		C√≥digo do Funcion√°rio : <input 
+		<label for ="code"> Code: </label>	<br>
+		<input 
 				type="text" readonly="readonly" name="code"
 				value="<c:out value="${employee.code}"/>" /> <br />
-		Nome :	<input
-				type="text" name="name"
+		<label for ="name"> Name: </label>	<br>
+		<input
+				type="text" required="required" pattern="[A-Za-z¿-˙0-9., -]{5,}+$" name="name" title="Apenas letras mai˙sculas e min˙sculas"
 				value="<c:out value="${employee.name}" />" /> <br />
-		CPF :	<input
-				type="text" name="cpf"
+		<label for ="cpf"> CPF: </label>	<br>
+		<input
+				type="text" required="required" pattern="[0-9]+$" name="cpf" title="Digite um CPF no formato: xxxxxxxxxxx"
 				value="<c:out value="${employee.cpf.cpf}" />" /> <br />
-		Email :	<input
-				type="text" name="email"
+		<label for ="email"> Email: </label>	<br>
+		<input
+				type="email" required="required" class="input-text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="email" title="Digite um EMAIL no formato: email@valido.com"
 				value="<c:out value="${employee.email.email}" />" /> <br />
-		Telefone :	<input
-				type="text" name="telephone"
+		<label for ="telepfone"> Telefone: </label>	<br>
+		<input
+				type="text" required="required" pattern="\([0-9]{2}\)? ?[0-9]{4,5}-[0-9]{4}$" maxlength="15" name="telephone" title="Digite um TELEFONE no formato: (xx) xxxx-xxxx"
 				value="<c:out value="${employee.telephone.telephone}" />" /> <br />
-		Cargo/Fun√ß√£o:	<input
-				type="text" name="role"
-				value="<c:out value="${employee.role}" />" /> <br />
+		<label for ="role"> Cargo/FunÁ„o: </label>	<br>
+		<input
+				type="text" required="required" pattern="[A-Za-z¿-˙0-9., -]{5,}+$" name="role" title="Apenas letras mai˙sculas e min˙sculas"
+				value="<c:out value="${employee.role}" />" /> <br /> <br />
+				
 		<input type="submit" value="Submit" />	
 	</form>
+</div>
 <%@include file='shared/footer.html'%>
 </body>
 </html>
