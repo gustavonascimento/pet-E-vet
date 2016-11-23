@@ -52,7 +52,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		OwnerDAO ownerDao = new OwnerDAO();
-		Owner owner = ownerDao.searchOwnerByCode(Long.parseLong(request.getParameter("code"))); // mudar !!!!!!!!!!!!!!!!!!!!!
+		Owner owner = ownerDao.searchOwner(request.getParameter("email"), request.getParameter("password"));
 		
 		RequestDispatcher requestDispatcher;
 		

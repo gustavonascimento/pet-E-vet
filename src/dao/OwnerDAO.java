@@ -91,6 +91,35 @@ public class OwnerDAO {
 		return owner;
 	}
 	
+	public Owner searchOwner(String email, String password){
+		String sql = "SELECT * FROM Owner WHERE email = ? AND senha = ?";
+		Owner owner = null;
+		try{
+			PreparedStatement prepareStatement = this.connection.prepareStatement(sql);
+			prepareStatement.setString(1, email);
+			prepareStatement.setString(2, password);
+			prepareStatement.setMaxRows(1);
+			
+			ResultSet resultSet = prepareStatement.executeQuery();
+			if(resultSet.next()){
+				owner = new Owner();
+				owner.setCode(resultSet.getLong("id"));
+				owner.setName(resultSet.getString("name"));
+				owner.setCpf(new Cpf(resultSet.getString("cpf")));
+				owner.setEmail(new Email(resultSet.getString("email")));
+				owner.setTelephone(new Telephone(resultSet.getString("telephone")));
+				owner.setPassword(resultSet.getString("passowrd"));
+			} else {
+				// Returns a null owner.
+			}
+			resultSet.close();
+			prepareStatement.close();
+		}catch(SQLException sqlException){
+			sqlException.printStackTrace();
+		}
+		return owner;
+	}
+	
 //	public Owner authentication(Owner owner) throws Exception{
 //		Owner ownerReturn = null;
 //		

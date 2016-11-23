@@ -25,7 +25,7 @@
 <%@include file='shared/navbar.html'%>
 <br></br>
 <br></br>
-	<table align="center" style="width:90%" title="customers" class="table">
+	<table align="center" style="width:90%" title="customers"  class="table">
 		<thead>
 			<tr>
 				<th><h2>Clientes</h2></th>
