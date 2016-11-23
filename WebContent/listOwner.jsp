@@ -49,13 +49,13 @@
 					<td><c:out value="${owner.email.email}" /></td>
 					<td><c:out value="${owner.telephone.telephone}" /></td>
 	
-					<td><a href="OwnerServlet?action=edit&code=<c:out value="${owner.code}"/>">Update</a></td>
-					<td><a href="OwnerServlet?action=delete&code=<c:out value="${owner.code}"/>">Delete</a></td>	
+					<td><a  class="btn btn-info" href="OwnerServlet?action=edit&code=<c:out value="${owner.code}"/>">Update</a></td>
+					<td><a  class="btn btn-danger" href="OwnerServlet?action=delete&code=<c:out value="${owner.code}"/>">Delete</a></td>	
 				</tr>
 			</c:forEach>
 		</tbody>
 		<tr>
-			<td><a href="OwnerServlet?action=insert">Cadastrar Administrador</a></td>		
+			<td><a class="btn btn-success" href="OwnerServlet?action=insert">Cadastrar Administrador</a></td>		
 		</tr>
 	</table>
 	<br></br>

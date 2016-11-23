@@ -55,6 +55,7 @@
 				<td><c:out value="${customer.address.city}" /></td>
 				<td><c:out value="${customer.address.cep}" /></td>
 				<td><a
+					class="btn btn-success"
 					href="AnimalServlet?action=insert&code=<c:out value="${customer.code}"/>">Cadastrar
 						Animal</a></td>
 			</tr>
@@ -84,6 +85,7 @@
 					<td><c:out value="${animal.age}" /></td>
 					<td><c:out value="${animal.sex}" /></td>
 					<td><a
+						class="btn btn-danger"
 						href="AnimalServlet?action=deleteAnimal&name=<c:out value="${animal.name}"/>">Delete</a></td>
 				</tr>
 			</c:forEach>

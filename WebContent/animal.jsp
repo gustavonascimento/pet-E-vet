@@ -46,7 +46,7 @@
 				type="text" required="required" pattern="[a-zA-Z\s]+$" maxlength = "1" name="sex" title="Apenas uma letra M ou F"
 				value="<c:out value="${animal.sex}" />" /> <br /> <br />
 				
-		<input type="submit" value="Submit" />	
+		<input type="submit" class="btn btn-primary" value="Submit" />	
 	</form>
 </div>
 <%@include file='shared/footer.html'%>

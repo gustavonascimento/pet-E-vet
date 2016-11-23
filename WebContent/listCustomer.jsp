@@ -58,15 +58,15 @@
 					<td><c:out value="${customer.address.neighborhood}" /></td>
 					<td><c:out value="${customer.address.city}" /></td>	
 					<td><c:out value="${customer.address.cep}" /></td>
-					<td><a href="AnimalServlet?action=listAnimal&code=<c:out value="${customer.code}"/>">Pets</a></td>	
-					<td><a href="CustomerServlet?action=edit&code=<c:out value="${customer.code}"/>">Update</a></td>
-					<td><a href="CustomerServlet?action=delete&code=<c:out value="${customer.code}"/>">Delete</a></td>	
+					<td><a class="btn btn-primary" href="AnimalServlet?action=listAnimal&code=<c:out value="${customer.code}"/>">Pets</a></td>	
+					<td><a class="btn btn-info" href="CustomerServlet?action=edit&code= <c:out value="${customer.code}"/>">Update</a></td>
+					<td><a class="btn btn-danger" href="CustomerServlet?action=delete&code=<c:out value="${customer.code}"/>">Delete</a></td>	
 				</tr>
 			</c:forEach>
 				
 		</tbody>
 		<tr>
-			<td> <a href="CustomerServlet?action=insert">Cadastrar Cliente</a></td>
+			<td> <a href="CustomerServlet?action=insert" class="btn btn-success">Cadastrar Cliente</a></td>
 		</tr>
 	</table>
 	<br></br>		

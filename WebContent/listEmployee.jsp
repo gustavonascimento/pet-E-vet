@@ -50,13 +50,13 @@
 					<td><c:out value="${employee.telephone.telephone}" /></td>
 					<td><c:out value="${employee.role}" /></td>
 	
-					<td><a href="EmployeeServlet?action=edit&code=<c:out value="${employee.code}"/>">Update</a></td>
-					<td><a href="EmployeeServlet?action=delete&code=<c:out value="${employee.code}"/>">Delete</a></td>	
+					<td><a class="btn btn-info" href="EmployeeServlet?action=edit&code=<c:out value="${employee.code}"/>">Update</a></td>
+					<td><a class="btn btn-danger" href="EmployeeServlet?action=delete&code=<c:out value="${employee.code}"/>">Delete</a></td>	
 				</tr>
 			</c:forEach>
 		</tbody>
 		<tr>
-			<td><a href="EmployeeServlet?action=insert">Cadastrar Funcionário</a></td>
+			<td> <a class="btn btn-success" href="EmployeeServlet?action=insert">Cadastrar Funcionário</a></td>
 		</tr>	
 	</table>
 	<br></br>

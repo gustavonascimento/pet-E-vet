@@ -49,7 +49,7 @@
 				type="password" name="password"
 				value="<c:out value="${owner.password}" />" /> <br /><br />
 				
-		<input type="submit" value="Submit" />	
+		<input type="submit" class="btn btn-primary" value="Submit" />	
 	</form>
 </div>
 <%@include file='shared/footer.html'%>

@@ -50,7 +50,7 @@
 				type="text" required="required" pattern="[A-Za-zÀ-ú0-9., -]{5,}+$" name="role" title="Apenas letras maiúsculas e minúsculas"
 				value="<c:out value="${employee.role}" />" /> <br /> <br />
 				
-		<input type="submit" value="Submit" />	
+		<input type="submit" class="btn btn-primary" value="Submit" />	
 	</form>
 </div>
 <%@include file='shared/footer.html'%>

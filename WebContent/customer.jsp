@@ -67,7 +67,7 @@
 				type="text" required="required"  pattern="[0-9]+$" name="cep" title="Apenas caracteres numéricos"
 				value="<c:out value="${customer.address.cep}" />" /> <br /><br>
 				
-		<button type="submit"> Cadastrar</button>	
+		<button type="submit" class="btn btn-primary"> Cadastrar</button>	
 	</form>
 	</div>
 	<br><br><br><br><br><br>
