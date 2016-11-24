@@ -43,7 +43,7 @@
 				value="<c:out value="${employee.email.email}" />" /> <br />
 		<label for ="telepfone"> Telefone: </label>	<br>
 		<input
-				type="text" required="required" pattern="\([0-9]{2}\)? ?[0-9]{4,5}-[0-9]{4}$" maxlength="15" name="telephone" title="Digite um TELEFONE no formato: (xx) xxxx-xxxx"
+				type="text" required="required" pattern="\([0-9]{2}\)? ?[0-9]{4,5}?-?[0-9]{4}$" maxlength="15" name="telephone" title="Digite um TELEFONE no formato: (xx) xxxx-xxxx"
 				value="<c:out value="${employee.telephone.telephone}" />" /> <br />
 		<label for ="role"> Cargo/Função: </label>	<br>
 		<input

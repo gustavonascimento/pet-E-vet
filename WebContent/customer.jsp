@@ -44,7 +44,7 @@
 				value="<c:out value="${customer.email.email}" />" /> <br />
 		<label for ="Telephone"> 	Telefone :	</label><br>
 		<input
-				type="text" required="required" pattern="\([0-9]{2}\)?\s?[0-9]{4,5}-[0-9]{4}$" maxlength="15" name="telephone" title="Digite um TELEFONE no formato: (xx) xxxx-xxxx"
+				type="text" required="required" pattern="\([0-9]{2}\)? ?[0-9]{4,5}?-?[0-9]{4}$" maxlength="15" name="telephone" title="Digite um TELEFONE no formato: (xx) xxxx-xxxx"
 				value="<c:out value="${customer.telephone.telephone}" />" /> <br />
 		<label for ="dob"> 	Data de Nascimento :	</label><br>
 		<input

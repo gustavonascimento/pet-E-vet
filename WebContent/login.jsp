@@ -7,20 +7,19 @@
 <title>Login</title>
 </head>
 <body>
-<%@include file='shared/navbar.html'%>
 <!-- Page Content -->
 <br/><br/>
 <section class="container" id="login">
 	<h1 class="page-header">
-		Login <small> Apenas para administradores</small>
+		Login
 	</h1>
-	<form action="login" method="POST">
-		<input type="text" name="nomeDeUsuario" placeholder="Login" />
-		<br/>
-		<input type="password" name="senha" placeholder="Senha" />
-		<br/>
+	<form action="LoginServlet" method="POST">
+		<input type="text" name="email" placeholder="Email" />
+		<br/><br/>
+		<input type="password" name="password" placeholder="Senha" />
+		<br/><br/>
 		<button type="submit" class="btn btn-primary" id="button-login">Entrar</button>
-		<br/> 
+		<br/> <br/><br/>
 	</form>
 </section>
 <%@include file='shared/footer.html'%>

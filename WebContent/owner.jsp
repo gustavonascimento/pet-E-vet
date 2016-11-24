@@ -42,7 +42,7 @@
 				value="<c:out value="${owner.email.email}" />" /> <br />
 		<label for ="telephone"> Telefone: </label>	<br>
 		<input
-				type="text" required="required" pattern="\([0-9]{2}\)? ?[0-9]{4,5}-[0-9]{4}$" maxlength="15" name="telephone" title="Digite um TELEFONE no formato: (xx) xxxx-xxxx "
+				type="text" required="required" pattern="\([0-9]{2}\)? ?[0-9]{4,5}?-?[0-9]{4}$" maxlength="15" name="telephone" title="Digite um TELEFONE no formato: (xx) xxxx-xxxx "
 				value="<c:out value="${owner.telephone.telephone}" />" /> <br />
 		<label for ="password"> Senha: </label>	<br>
 		<input
