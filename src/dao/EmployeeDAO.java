@@ -13,14 +13,15 @@ import util.Cpf;
 import util.Email;
 import util.Telephone;
 
-public class EmployeeDAO {
+public class EmployeeDAO implements GenericDAO<Employee>{
 private Connection connection;
 	
 	public EmployeeDAO() {
 		this.connection = ConnectionFactory.getConnection();
 	}
 	
-	public void addEmployee(Employee employee){
+	@Override
+	public void add(Employee employee){
 		String sql = "INSERT INTO Employee" + "(name, cpf, email, telephone, role)"
 				+ " values(?,?,?,?,?)";
 		try{
@@ -40,7 +41,8 @@ private Connection connection;
 		}
 	}
 	
-	public Employee searchEmployeeByCode(Long code){
+	@Override
+	public Employee find(Long code){
 		String sql = "SELECT * FROM Employee WHERE id = ?";
 		Employee employee = null;
 		try{
@@ -67,7 +69,8 @@ private Connection connection;
 		return employee;
 	}
 	
-	public List<Employee> getAllEmployees(){
+	@Override
+	public List<Employee> findAll(){
 		List<Employee> employeesList = new ArrayList<Employee>();
 		
 		try{
@@ -91,7 +94,8 @@ private Connection connection;
 		return employeesList;
 	}
 	
-	public void updateEmployee(Employee employee) {
+	@Override
+	public void update(Employee employee) {
 		String sql = "UPDATE Employee SET name=?, cpf=?, email=?, telephone=?, role=?"
 					+"WHERE id=?";
 		try{
@@ -110,7 +114,8 @@ private Connection connection;
 		}
 	}
 	
-	public void deleteEmployee(Long code){
+	@Override
+	public void delete(Long code){
 		String sql = "DELETE FROM Employee WHERE id=?";
 		try{
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);

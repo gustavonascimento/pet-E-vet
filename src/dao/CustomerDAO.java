@@ -14,14 +14,15 @@ import util.Cpf;
 import util.Email;
 import util.Telephone;
 
-public class CustomerDAO {
+public class CustomerDAO implements GenericDAO<Customer>{
 	private Connection connection;
 	
 	public CustomerDAO() {
 		this.connection = ConnectionFactory.getConnection();
 	}
 	
-	public void addCustumer(Customer customer){
+	@Override
+	public void add(Customer customer){
 		String sql = "INSERT INTO Customer (name, cpf, email, telephone,"
 				+ "date_of_birth, address, neighborhood, city, cep)"
 				+ " values(?,?,?,?,?,?,?,?,?)";
@@ -46,7 +47,8 @@ public class CustomerDAO {
 		}
 	}
 	
-	public Customer searchCustomerByCode(Long code){
+	@Override
+	public Customer find(Long code){
 		String sql = "SELECT * FROM Customer WHERE id = ?";
 		Customer customer = null;
 		try{
@@ -77,7 +79,8 @@ public class CustomerDAO {
 		return customer;
 	}
 	
-	public List<Customer> getAllCustomers(){
+	@Override
+	public List<Customer> findAll(){
 		List<Customer> customersList = new ArrayList<Customer>();
 		
 		try{
@@ -104,7 +107,8 @@ public class CustomerDAO {
 		return customersList;
 	}
 	
-	public void updateCustomer(Customer customer) {
+	@Override
+	public void update(Customer customer) {
 		String sql = "UPDATE Customer SET name=?, cpf=?, email=?, telephone=?,"
 				+ "date_of_birth=?, address=?, neighborhood=?, city=?, cep=?"
 				+"WHERE id=?";
@@ -128,7 +132,8 @@ public class CustomerDAO {
 		}
 	}
 	
-	public void deleteCustomer(Long code){
+	@Override
+	public void delete(Long code){
 		String sql = "DELETE FROM Customer WHERE id=?";
 		try{
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -139,4 +144,5 @@ public class CustomerDAO {
 			sqlException.printStackTrace();
 		}
 	}
+
 }

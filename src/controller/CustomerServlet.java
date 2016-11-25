@@ -42,17 +42,17 @@ public class CustomerServlet extends HttpServlet {
 		
 		if(action.equalsIgnoreCase("delete")){
 			Long code = Long.parseLong(request.getParameter("code"));
-			customerDao.deleteCustomer(code);
+			customerDao.delete(code);
 			forward = LIST_USER;
-			request.setAttribute("customersList", customerDao.getAllCustomers());
+			request.setAttribute("customersList", customerDao.findAll());
 		}else if(action.equalsIgnoreCase("edit")){
 			forward = INSERT_OR_EDIT;
 			Long code = Long.parseLong(request.getParameter("code"));
-			Customer customer = customerDao.searchCustomerByCode(code);
+			Customer customer = customerDao.find(code);
 			request.setAttribute("customer", customer);
 		} else if(action.equalsIgnoreCase("listCustomer")){
 			forward = LIST_USER;
-			request.setAttribute("customersList", customerDao.getAllCustomers());
+			request.setAttribute("customersList", customerDao.findAll());
 		} else {
 			forward = INSERT_OR_EDIT;
 		}
@@ -78,14 +78,14 @@ public class CustomerServlet extends HttpServlet {
 		
 		String code = request.getParameter("code");
 		if (code == null || code.isEmpty()){
-			customerDao.addCustumer(customer);
+			customerDao.add(customer);
 		} else {
 			customer.setCode(Long.parseLong(code));
-			customerDao.updateCustomer(customer);
+			customerDao.update(customer);
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(LIST_USER);
-		request.setAttribute("customersList", customerDao.getAllCustomers());
+		request.setAttribute("customersList", customerDao.findAll());
 		dispatcher.forward(request, response);
 	}
 

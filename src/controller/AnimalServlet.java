@@ -48,7 +48,7 @@ public class AnimalServlet extends HttpServlet {
 			forward = LIST_ANIMALS;
 			String name = request.getParameter("name");
 			animalDao.deleteAnimal(name);
-			Customer customer = customerDao.searchCustomerByCode((Long)session.getAttribute("code"));
+			Customer customer = customerDao.find((Long)session.getAttribute("code"));
 			request.setAttribute("customer", customer);
 			request.setAttribute("animalsList", animalDao.listAnimalsForACustomer((Long)session.getAttribute("code")));
 			
@@ -56,14 +56,14 @@ public class AnimalServlet extends HttpServlet {
 			forward = LIST_ANIMALS;
 			Long code = Long.parseLong(request.getParameter("code"));
 			session.setAttribute("code", code);
-			Customer customer = customerDao.searchCustomerByCode(code);
+			Customer customer = customerDao.find(code);
 			request.setAttribute("customer", customer);
 			request.setAttribute("animalsList", animalDao.listAnimalsForACustomer(code));
 			
 		}else if (action.equalsIgnoreCase("insert")){
 			forward = INSERT;
 			Long code = Long.parseLong(request.getParameter("code"));
-			Customer customer = customerDao.searchCustomerByCode(code);
+			Customer customer = customerDao.find(code);
 			request.setAttribute("customer", customer);
 
 		}else{
@@ -87,11 +87,11 @@ public class AnimalServlet extends HttpServlet {
 		animal.setAge(Integer.parseInt(request.getParameter("age")));
 		animal.setSex(request.getParameter("sex").charAt(0));
 		
-		animalDao.addAnimal(animal);
+		animalDao.add(animal);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(LIST_ANIMALS);
 		Long code = Long.parseLong(request.getParameter("code"));
-		Customer customer = customerDao.searchCustomerByCode(code);
+		Customer customer = customerDao.find(code);
 		request.setAttribute("customer", customer);
 		request.setAttribute("animalsList", animalDao.listAnimalsForACustomer(code));
 		dispatcher.forward(request, response);

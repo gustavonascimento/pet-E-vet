@@ -43,17 +43,17 @@ public class OwnerServlet extends HttpServlet {
 		
 		if(action.equalsIgnoreCase("delete")){
 			Long code = Long.parseLong(request.getParameter("code"));
-			ownerDao.deleteOwner(code);
+			ownerDao.delete(code);
 			forward = LIST_OWNER;
-			request.setAttribute("ownersList", ownerDao.getAllOwners());
+			request.setAttribute("ownersList", ownerDao.findAll());
 		}else if(action.equalsIgnoreCase("edit")){
 			forward = INSERT_OR_EDIT;
 			Long code = Long.parseLong(request.getParameter("code"));
-			Owner owner = ownerDao.searchOwnerByCode(code);
+			Owner owner = ownerDao.find(code);
 			request.setAttribute("owner", owner);
 		} else if(action.equalsIgnoreCase("listOwner")){
 			forward = LIST_OWNER;
-			request.setAttribute("ownersList", ownerDao.getAllOwners());
+			request.setAttribute("ownersList", ownerDao.findAll());
 		} else {
 			forward = INSERT_OR_EDIT;
 		}
@@ -75,14 +75,14 @@ public class OwnerServlet extends HttpServlet {
 		
 		String code = request.getParameter("code");
 		if (code == null || code.isEmpty()){
-			ownerDao.addOwner(owner);
+			ownerDao.add(owner);
 		} else {
 			owner.setCode(Long.parseLong(code));
-			ownerDao.updateOwner(owner);
+			ownerDao.update(owner);
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(LIST_OWNER);
-		request.setAttribute("ownersList", ownerDao.getAllOwners());
+		request.setAttribute("ownersList", ownerDao.findAll());
 		dispatcher.forward(request, response);
 	}
 

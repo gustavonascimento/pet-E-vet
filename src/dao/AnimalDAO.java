@@ -9,14 +9,15 @@ import java.util.List;
 
 import model.Animal;
 
-public class AnimalDAO {
+public class AnimalDAO implements GenericDAO<Animal>{
 	private Connection connection;
 
 	public AnimalDAO(){
 		this.connection = ConnectionFactory.getConnection();
 	}
 
-	public void addAnimal(Animal animal){
+	@Override
+	public void add(Animal animal){
 		String sql = "INSERT INTO Animal (id, name, breed, age, sex)"
 				+" values(?,?,?,?,?)";
 		try{
@@ -73,5 +74,25 @@ public class AnimalDAO {
 		} catch(SQLException sqlException){
 			sqlException.printStackTrace();
 		}
+	}
+
+	@Override
+	public Animal find(Long id) {
+		return null;
+	}
+
+	@Override
+	public List<Animal> findAll() {
+		return null;
+	}
+
+	@Override
+	public void update(Animal object) {
+		
+	}
+
+	@Override
+	public void delete(Long id) {
+		
 	}
 }

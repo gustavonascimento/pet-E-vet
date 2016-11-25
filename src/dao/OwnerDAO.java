@@ -14,7 +14,7 @@ import util.Cpf;
 import util.Email;
 import util.Telephone;
 
-public class OwnerDAO {
+public class OwnerDAO implements GenericDAO<Owner>{
 	
 	private Connection connection;
 	
@@ -22,7 +22,8 @@ public class OwnerDAO {
 		this.connection = ConnectionFactory.getConnection();
 	}
 	
-	public void addOwner(Owner owner){
+	@Override
+	public void add(Owner owner){
 		String sql = "INSERT INTO Owner" + "(name, cpf, email, telephone, password)"
 				+ " values(?,?,?,?,?)";
 		
@@ -44,7 +45,8 @@ public class OwnerDAO {
 		}
 	}
 	
-	public Owner searchOwnerByCode(Long code){
+	@Override
+	public Owner find(Long code){
 		String sql = "SELECT * FROM Owner WHERE id = ?";
 		Owner owner = null;
 		try{
@@ -136,8 +138,9 @@ public class OwnerDAO {
 //		}
 //		return owner;
 //	}
-	
-	public List<Owner> getAllOwners(){
+
+	@Override
+	public List<Owner> findAll(){
 		List<Owner> ownersList = new ArrayList<Owner>();
 		
 		try{
@@ -161,7 +164,8 @@ public class OwnerDAO {
 		return ownersList;
 	}
 	
-	public void updateOwner(Owner owner) {
+	@Override
+	public void update(Owner owner) {
 		String sql = "UPDATE Customer SET name=?, cpf=?, email=?, telephone=?,"
 				+ "password=?"
 				+"WHERE id=?";
@@ -181,7 +185,8 @@ public class OwnerDAO {
 		}
 	}
 	
-	public void deleteOwner(Long code){
+	@Override
+	public void delete(Long code){
 		String sql = "DELETE FROM Owner WHERE id=?";
 		try{
 			PreparedStatement preparedStatement = connection.prepareStatement(sql);

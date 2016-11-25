@@ -42,17 +42,17 @@ public class EmployeeServlet extends HttpServlet{
 		
 		if(action.equalsIgnoreCase("delete")){
 			Long code = Long.parseLong(request.getParameter("code"));
-			employeeDao.deleteEmployee(code);
+			employeeDao.delete(code);
 			forward = LIST_EMPLOYEE;
-			request.setAttribute("employeeList", employeeDao.getAllEmployees());
+			request.setAttribute("employeeList", employeeDao.findAll());
 		}else if(action.equalsIgnoreCase("edit")){
 			forward = INSERT_OR_EDIT;
 			Long code = Long.parseLong(request.getParameter("code"));
-			Employee employee = employeeDao.searchEmployeeByCode(code);
+			Employee employee = employeeDao.find(code);
 			request.setAttribute("employee", employee);
 		} else if(action.equalsIgnoreCase("listEmployee")){
 			forward = LIST_EMPLOYEE;
-			request.setAttribute("employeesList", employeeDao.getAllEmployees());
+			request.setAttribute("employeesList", employeeDao.findAll());
 		} else {
 			forward = INSERT_OR_EDIT;
 		}
@@ -74,15 +74,15 @@ public class EmployeeServlet extends HttpServlet{
 		
 		String code = request.getParameter("code");
 		if (code == null || code.isEmpty()){
-			employeeDao.addEmployee(employee);
+			employeeDao.add(employee);
 		} else {
 			employee.setCode(Long.parseLong(code));
-			employeeDao.updateEmployee(employee);
+			employeeDao.update(employee);
 		}
 		
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(LIST_EMPLOYEE);
-		request.setAttribute("employeesList", employeeDao.getAllEmployees());
+		request.setAttribute("employeesList", employeeDao.findAll());
 		dispatcher.forward(request, response);
 	}
 }
