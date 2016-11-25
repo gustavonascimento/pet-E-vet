@@ -90,7 +90,7 @@ public class OwnerDAO implements GenericDAO<Owner>{
 				owner.setCpf(new Cpf(resultSet.getString("cpf")));
 				owner.setEmail(new Email(resultSet.getString("email")));
 				owner.setTelephone(new Telephone(resultSet.getString("telephone")));
-				owner.setPassword(resultSet.getString("passowrd"));
+				owner.setPassword(resultSet.getString("password"));
 			} else {
 				// Returns a null owner.
 			}

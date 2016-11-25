@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import model.Owner;
 
@@ -54,7 +56,19 @@ public class LoginServlet extends HttpServlet {
 		OwnerDAO ownerDao = new OwnerDAO();
 		Owner owner = ownerDao.searchOwner(request.getParameter("email"), request.getParameter("password"));
 		
+		String email = request.getParameter("email");
+	    String password = request.getParameter("password");
+	    Map<String, String> messages = new HashMap<String, String>();
 		RequestDispatcher requestDispatcher;
+		
+		if (email == null || email.isEmpty()) {
+            messages.put("username", "Please enter username");
+        }
+
+        if (password == null || password.isEmpty()) {
+            messages.put("password", "Please enter password");
+        }
+		
 		
 		if (owner != null){
 			HttpSession session = request.getSession(true);
