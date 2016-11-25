@@ -25,6 +25,7 @@ public class FilerURI implements Filter{
 		HttpServletRequest req =  (HttpServletRequest) request;
 		String uri = req.getRequestURI();
 		System.out.println("Usuario acesso a URI: " + uri);
+		chain.doFilter(request, response);
 		
 	}
 
