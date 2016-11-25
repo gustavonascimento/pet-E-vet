@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.EmployeeDAO;
+import dao.GenericDAO;
 import model.Employee;
 import util.Cpf;
 import util.Email;
@@ -23,14 +24,14 @@ public class EmployeeServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
     private static String INSERT_OR_EDIT = "WEB-INF/jsp/employee.jsp";
     private static String LIST_EMPLOYEE = "WEB-INF/jsp/listEmployee.jsp";
-    private EmployeeDAO employeeDao;
+    private GenericDAO<Employee> dao;
     
     /**
      * @see HttpServlet#HttpServlet()
      */
     public EmployeeServlet() {
         super();
-        employeeDao = new EmployeeDAO();
+        dao = new EmployeeDAO();
     }
 
 	/**
@@ -42,17 +43,17 @@ public class EmployeeServlet extends HttpServlet{
 		
 		if(action.equalsIgnoreCase("delete")){
 			Long code = Long.parseLong(request.getParameter("code"));
-			employeeDao.delete(code);
+			dao.delete(code);
 			forward = LIST_EMPLOYEE;
-			request.setAttribute("employeeList", employeeDao.findAll());
+			request.setAttribute("employeeList", dao.findAll());
 		}else if(action.equalsIgnoreCase("edit")){
 			forward = INSERT_OR_EDIT;
 			Long code = Long.parseLong(request.getParameter("code"));
-			Employee employee = employeeDao.find(code);
+			Employee employee = dao.find(code);
 			request.setAttribute("employee", employee);
 		} else if(action.equalsIgnoreCase("listEmployee")){
 			forward = LIST_EMPLOYEE;
-			request.setAttribute("employeesList", employeeDao.findAll());
+			request.setAttribute("employeesList", dao.findAll());
 		} else {
 			forward = INSERT_OR_EDIT;
 		}
@@ -74,15 +75,15 @@ public class EmployeeServlet extends HttpServlet{
 		
 		String code = request.getParameter("code");
 		if (code == null || code.isEmpty()){
-			employeeDao.add(employee);
+			dao.add(employee);
 		} else {
 			employee.setCode(Long.parseLong(code));
-			employeeDao.update(employee);
+			dao.update(employee);
 		}
 		
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(LIST_EMPLOYEE);
-		request.setAttribute("employeesList", employeeDao.findAll());
+		request.setAttribute("employeesList", dao.findAll());
 		dispatcher.forward(request, response);
 	}
 }

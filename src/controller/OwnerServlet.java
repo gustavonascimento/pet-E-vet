@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+import dao.GenericDAO;
 import dao.OwnerDAO;
 import model.Owner;
 import util.Cpf;
@@ -24,14 +24,14 @@ public class OwnerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private static String INSERT_OR_EDIT = "WEB-INF/jsp/owner.jsp";
     private static String LIST_OWNER = "WEB-INF/jsp/listOwner.jsp";
-    private OwnerDAO ownerDao;
+    private GenericDAO<Owner> dao;
     
     /**
      * @see HttpServlet#HttpServlet()
      */
     public OwnerServlet() {
         super();
-        ownerDao = new OwnerDAO();
+        dao = new OwnerDAO();
     }
 
 	/**
@@ -43,17 +43,17 @@ public class OwnerServlet extends HttpServlet {
 		
 		if(action.equalsIgnoreCase("delete")){
 			Long code = Long.parseLong(request.getParameter("code"));
-			ownerDao.delete(code);
+			dao.delete(code);
 			forward = LIST_OWNER;
-			request.setAttribute("ownersList", ownerDao.findAll());
+			request.setAttribute("ownersList", dao.findAll());
 		}else if(action.equalsIgnoreCase("edit")){
 			forward = INSERT_OR_EDIT;
 			Long code = Long.parseLong(request.getParameter("code"));
-			Owner owner = ownerDao.find(code);
+			Owner owner = dao.find(code);
 			request.setAttribute("owner", owner);
 		} else if(action.equalsIgnoreCase("listOwner")){
 			forward = LIST_OWNER;
-			request.setAttribute("ownersList", ownerDao.findAll());
+			request.setAttribute("ownersList", dao.findAll());
 		} else {
 			forward = INSERT_OR_EDIT;
 		}
@@ -75,14 +75,14 @@ public class OwnerServlet extends HttpServlet {
 		
 		String code = request.getParameter("code");
 		if (code == null || code.isEmpty()){
-			ownerDao.add(owner);
+			dao.add(owner);
 		} else {
 			owner.setCode(Long.parseLong(code));
-			ownerDao.update(owner);
+			dao.update(owner);
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(LIST_OWNER);
-		request.setAttribute("ownersList", ownerDao.findAll());
+		request.setAttribute("ownersList", dao.findAll());
 		dispatcher.forward(request, response);
 	}
 

@@ -14,6 +14,7 @@ import model.Animal;
 import model.Customer;
 import dao.AnimalDAO;
 import dao.CustomerDAO;
+import dao.GenericDAO;
 
 /**
  * Servlet implementation class AnimalServlet
@@ -25,7 +26,7 @@ public class AnimalServlet extends HttpServlet {
     private static String LIST_ANIMALS = "WEB-INF/jsp/listAnimal.jsp";
     private static String INSERT = "WEB-INF/jsp/animal.jsp";
     private AnimalDAO animalDao;
-    private CustomerDAO customerDao;
+    private GenericDAO<Customer> dao;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -33,7 +34,7 @@ public class AnimalServlet extends HttpServlet {
     public AnimalServlet() {
         super();
         animalDao = new AnimalDAO();
-        customerDao = new CustomerDAO();
+        dao = new CustomerDAO();
     }
 
 	/**
@@ -48,7 +49,7 @@ public class AnimalServlet extends HttpServlet {
 			forward = LIST_ANIMALS;
 			String name = request.getParameter("name");
 			animalDao.deleteAnimal(name);
-			Customer customer = customerDao.find((Long)session.getAttribute("code"));
+			Customer customer = dao.find((Long)session.getAttribute("code"));
 			request.setAttribute("customer", customer);
 			request.setAttribute("animalsList", animalDao.listAnimalsForACustomer((Long)session.getAttribute("code")));
 			
@@ -56,14 +57,14 @@ public class AnimalServlet extends HttpServlet {
 			forward = LIST_ANIMALS;
 			Long code = Long.parseLong(request.getParameter("code"));
 			session.setAttribute("code", code);
-			Customer customer = customerDao.find(code);
+			Customer customer = dao.find(code);
 			request.setAttribute("customer", customer);
 			request.setAttribute("animalsList", animalDao.listAnimalsForACustomer(code));
 			
 		}else if (action.equalsIgnoreCase("insert")){
 			forward = INSERT;
 			Long code = Long.parseLong(request.getParameter("code"));
-			Customer customer = customerDao.find(code);
+			Customer customer = dao.find(code);
 			request.setAttribute("customer", customer);
 
 		}else{
@@ -91,7 +92,7 @@ public class AnimalServlet extends HttpServlet {
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(LIST_ANIMALS);
 		Long code = Long.parseLong(request.getParameter("code"));
-		Customer customer = customerDao.find(code);
+		Customer customer = dao.find(code);
 		request.setAttribute("customer", customer);
 		request.setAttribute("animalsList", animalDao.listAnimalsForACustomer(code));
 		dispatcher.forward(request, response);
