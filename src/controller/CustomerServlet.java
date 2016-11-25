@@ -21,8 +21,8 @@ import dao.CustomerDAO;
 @WebServlet("/CustomerServlet")
 public class CustomerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private static String INSERT_OR_EDIT = "/customer.jsp";
-    private static String LIST_USER = "/listCustomer.jsp";
+    private static String INSERT_OR_EDIT = "WEB-INF/jsp/customer.jsp";
+    private static String LIST_USER = "WEB-INF/jsp/listCustomer.jsp";
     private CustomerDAO customerDao;
     
     /**

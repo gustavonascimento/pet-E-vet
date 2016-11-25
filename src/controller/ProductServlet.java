@@ -19,8 +19,8 @@ import dao.ProductDAO;
 @WebServlet("/ProductServlet")
 public class ProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private static String INSERT_OR_EDIT = "/product.jsp";
-    private static String LIST_PRODUCT = "/listProduct.jsp";
+    private static String INSERT_OR_EDIT = "WEB-INF/jsp/product.jsp";
+    private static String LIST_PRODUCT = "WEB-INF/jsp/listProduct.jsp";
 	private ProductDAO productDao; 
 	
        

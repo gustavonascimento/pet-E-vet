@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<%@include file='shared/head.html'%>
+<%@include file='../../shared/head.html'%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
@@ -22,7 +22,7 @@
 
 </head>
 <body>
-<%@include file='shared/navbar.html'%>
+<%@include file='../../shared/navbar.html'%>
 <br></br>
 <br></br>
 	<table align="center" style="width:90%" class="table">
@@ -60,6 +60,6 @@
 		</tr>	
 	</table>
 	<br></br>
-	<%@include file='shared/footer.html'%>	
+	<%@include file='../../shared/footer.html'%>	
 </body>
 </html>

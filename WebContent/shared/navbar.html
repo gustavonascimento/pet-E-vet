@@ -4,15 +4,17 @@
 	<div class="container">
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
-			<a class="navbar-brand" href="/Pet_e-Vet/index.jsp">Pet e-Vet</a>
+			<a class="navbar-brand" href="CustomerServlet?action=listCustomer">Pet e-Vet</a>
+			
 		</div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
+			<p class="navbar-text">Olá ${owner.name}</p>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="EmployeeServlet?action=listEmployee">Funcionários</a></li>
 				<li><a href="OwnerServlet?action=listOwner">Administradores</a></li>
-				<li><a href="login.jsp">Login</a></li>
+				<li><a href="LogoutServlet"><span class="glyphicon glyphicon-log-out"></span>   Logout</a></li>
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->

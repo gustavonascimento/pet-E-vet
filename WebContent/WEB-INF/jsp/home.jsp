@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<jsp:forward page="/CustomerServlet?action=listCustomer" />
 </body>
 </html>

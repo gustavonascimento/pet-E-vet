@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html lang = "pt-br">
 <head>
-<%@include file='shared/head.html'%>
+<%@include file='../../shared/head.html'%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
@@ -20,7 +20,7 @@
 </head>
 </head>
 <body>
-<%@include file='shared/navbar.html'%>
+<%@include file='../../shared/navbar.html'%>
 <br></br>
 <br></br>
 
@@ -71,6 +71,6 @@
 	</form>
 	</div>
 	<br><br><br><br><br><br>
-<%@include file='shared/footer.html'%>
+<%@include file='../../shared/footer.html'%>
 </body>
 </html>

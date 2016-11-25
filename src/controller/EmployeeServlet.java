@@ -21,8 +21,8 @@ import util.Telephone;
 @WebServlet("/EmployeeServlet")
 public class EmployeeServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
-    private static String INSERT_OR_EDIT = "/employee.jsp";
-    private static String LIST_EMPLOYEE = "/listEmployee.jsp";
+    private static String INSERT_OR_EDIT = "WEB-INF/jsp/employee.jsp";
+    private static String LIST_EMPLOYEE = "WEB-INF/jsp/listEmployee.jsp";
     private EmployeeDAO employeeDao;
     
     /**

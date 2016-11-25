@@ -22,7 +22,8 @@ import dao.OwnerDAO;
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    private static final String HOME_VIEW = "WEB-INF/jsp/home.jsp";
+    private static final String LOGIN = "login.jsp";
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -41,10 +42,10 @@ public class LoginServlet extends HttpServlet {
 		Owner owner = (Owner) session.getAttribute("owner");
 		
 		if(owner != null){
-			requestDispatcher = request.getRequestDispatcher("home.jsp");
+			requestDispatcher = request.getRequestDispatcher(HOME_VIEW);
 		} 
 		else {
-			requestDispatcher = request.getRequestDispatcher("login.jsp");
+			requestDispatcher = request.getRequestDispatcher(LOGIN);
 		}
 		requestDispatcher.forward(request, response);
 	}
@@ -74,10 +75,10 @@ public class LoginServlet extends HttpServlet {
 			HttpSession session = request.getSession(true);
 			session.setAttribute("owner", owner);
 			
-			requestDispatcher = request.getRequestDispatcher("home.jsp");
+			requestDispatcher = request.getRequestDispatcher(HOME_VIEW);
 		}
 		else{
-			requestDispatcher = request.getRequestDispatcher("login.jsp");
+			requestDispatcher = request.getRequestDispatcher(LOGIN);
 		}
 		
 		requestDispatcher.forward(request, response);

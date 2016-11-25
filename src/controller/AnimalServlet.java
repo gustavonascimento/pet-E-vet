@@ -22,8 +22,8 @@ import dao.CustomerDAO;
 public class AnimalServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-    private static String LIST_ANIMALS = "/listAnimal.jsp";
-    private static String INSERT = "/animal.jsp";
+    private static String LIST_ANIMALS = "WEB-INF/jsp/listAnimal.jsp";
+    private static String INSERT = "WEB-INF/jsp/animal.jsp";
     private AnimalDAO animalDao;
     private CustomerDAO customerDao;
        

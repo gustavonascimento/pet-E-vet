@@ -22,8 +22,8 @@ import util.Telephone;
 @WebServlet("/OwnerServlet")
 public class OwnerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private static String INSERT_OR_EDIT = "/owner.jsp";
-    private static String LIST_OWNER = "/listOwner.jsp";
+    private static String INSERT_OR_EDIT = "WEB-INF/jsp/owner.jsp";
+    private static String LIST_OWNER = "WEB-INF/jsp/listOwner.jsp";
     private OwnerDAO ownerDao;
     
     /**
