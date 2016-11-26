@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
 @WebFilter(urlPatterns = "/*")
@@ -24,7 +25,16 @@ public class FilerURI implements Filter{
 			throws IOException, ServletException {
 		HttpServletRequest req =  (HttpServletRequest) request;
 		String uri = req.getRequestURI();
-		System.out.println("Usuario acesso a URI: " + uri);
+		Cookie[] cookies = req.getCookies();
+		String owner = "<deslogado>";
+		
+		for(Cookie cookie : cookies) {
+			if(cookie.getName().equals("owner.deslogado")) {
+				owner = cookie.getValue();
+			}
+		}
+		
+		System.out.println("Usuario " + owner + " acessoando a URI: " + uri);
 		chain.doFilter(request, response);
 		
 	}
