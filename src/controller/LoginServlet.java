@@ -24,7 +24,7 @@ import dao.OwnerDAO;
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private static final String HOME_VIEW = "WEB-INF/jsp/home.jsp";
-    private static final String LOGIN = "login.jsp";
+    private static final String LOGIN = "WEB-INF/jsp/login.jsp";
     /**
      * @see HttpServlet#HttpServlet()
      */
